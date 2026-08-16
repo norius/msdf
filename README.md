@@ -1,6 +1,6 @@
 # Dance Factory
 
-Official website and digital landing page for **Dance Factory**, an urban dance academy in Rome founded by Marco Stra.
+Official website and digital landing page for **Dance Factory**, an urban dance academy in Rho founded by Marco Stra.
 
 ## Tech Stack
 
