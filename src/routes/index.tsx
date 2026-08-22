@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight } from "lucide-react";
+import { useState, useCallback } from "react";
+import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import heroImg from "@/assets/hero.jpg";
@@ -35,6 +36,20 @@ function scrollToId(id: string) {
 function Index() {
   const [activeDay, setActiveDay] = useState<Day>("Lunedì");
   const [sent, setSent] = useState(false);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    containScroll: "trimSnaps",
+    dragFree: true,
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -161,7 +176,7 @@ function Index() {
                     {lesson.room} · {lesson.teacher}
                   </p>
                 </div>
-                <span className="shrink-0 rounded-full border border-border px-3 py-1 text-[11px] font-semibold tracking-widest text-muted-foreground uppercase">
+                <span className="w-fit shrink-0 rounded-full border border-border px-3 py-1 text-[11px] font-semibold tracking-widest text-muted-foreground uppercase">
                   {lesson.level}
                 </span>
               </article>
@@ -216,29 +231,53 @@ function Index() {
       {/* Staff */}
       <section id="staff" className="grain-fade scroll-mt-24 border-t border-border py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5">
-          <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">Staff</span>
-          <h2 className="display-title mt-4 text-4xl sm:text-5xl">I nostri maestri</h2>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">Staff</span>
+              <h2 className="display-title mt-4 text-4xl sm:text-5xl">I nostri maestri</h2>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={scrollPrev}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground hover:scale-105 active:scale-95 cursor-pointer"
+                aria-label="Insegnante precedente"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={scrollNext}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground hover:scale-105 active:scale-95 cursor-pointer"
+                aria-label="Insegnante successivo"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {staff.map((p) => (
-              <article key={p.name} className="overflow-hidden rounded-xl border border-border bg-card">
-                <img
-                  src={p.image}
-                  alt={`Ritratto di ${p.name}, insegnante Dance Factory`}
-                  width={700}
-                  height={700}
-                  loading="lazy"
-                  className="aspect-square w-full object-cover"
-                />
-                <div className="p-5">
-                  <h3 className="display-title text-2xl">{p.name}</h3>
-                  <p className="mt-1 text-xs font-semibold tracking-widest text-primary uppercase">
-                    {p.styles}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
+          <div className="mt-10 overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+            <div className="flex gap-5">
+              {staff.map((p) => (
+                <div key={p.name} className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_23.5%]">
+                  <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60">
+                    <img
+                      src={p.image}
+                      alt={`Ritratto di ${p.name}, insegnante Dance Factory`}
+                      width={700}
+                      height={700}
+                      loading="lazy"
+                      className="aspect-square w-full object-cover"
+                    />
+                    <div className="flex flex-1 flex-col p-5">
+                      <h3 className="display-title text-2xl">{p.name}</h3>
+                      <p className="mt-1 text-xs font-semibold tracking-widest text-primary uppercase">
+                        {p.styles}
+                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
+                    </div>
+                  </article>
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -317,11 +356,19 @@ function Index() {
                 <option value="" disabled>
                   Corso di interesse
                 </option>
-                {disciplines.map((d) => (
-                  <option key={d.name} value={d.name}>
-                    {d.name}
-                  </option>
-                ))}
+                {Array.from(
+                  new Set(
+                    Object.values(schedule)
+                      .flat()
+                      .map((l) => l.course.replace(/\s*\(\d+(?:-\d+|\+)?\)$/, ""))
+                  )
+                )
+                  .sort()
+                  .map((courseName) => (
+                    <option key={courseName} value={courseName}>
+                      {courseName}
+                    </option>
+                  ))}
                 <option value="prova">Prima settimana di prova</option>
               </select>
               <textarea
