@@ -296,19 +296,43 @@ function Index() {
             <ul className="mt-8 space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>Via del Ritmo 24, 00185 Roma</span>
+                <a
+                  href="https://maps.app.goo.gl/yudyumBDX7iy22x68"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-primary cursor-pointer"
+                >
+                  Via Giuseppe di Vittorio, 2/b, 20017 Rho MI
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>+39 06 1234 5678</span>
+                <a
+                  href="tel:+393808676338"
+                  className="transition-colors hover:text-primary cursor-pointer"
+                >
+                  +39 380 867 6338
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>info@dancefactory.it</span>
+                <a
+                  href="mailto:info@dancefactory.it"
+                  className="transition-colors hover:text-primary cursor-pointer"
+                >
+                  info@dancefactory.it
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Instagram className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>@dancefactory.official</span>
+                <a
+                  href="https://instagram.com/msdancefactory?utm_medium=copy_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-primary cursor-pointer"
+                >
+                  @msdancefactory
+                </a>
               </li>
             </ul>
 

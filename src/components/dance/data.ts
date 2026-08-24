@@ -139,19 +139,13 @@ export const staff = [
     bio: "Specializzata nell'insegnamento infantile. Coniuga gioco e basi della danza classica per avvicinare i piccolissimi (3-5 anni) al movimento.",
   },
   {
-    name: "Guest Teacher",
-    image: teacher2,
-    styles: "Workshop · Open Class",
-    bio: "Insegnanti esterni e coreografi ospiti di fama nazionale e internazionale per lezioni speciali e laboratori di alto livello.",
-  },
-  {
     name: "Ronald",
     image: teacher3,
     styles: "Reggaeton",
     bio: "Esperto di danze caraibiche e reggaeton. Le sue classi uniscono ritmo, energia urbana e tanto divertimento.",
   },
   {
-    name: "Kuma",
+    name: "Kumo",
     image: teacher4,
     styles: "Hip-Hop Choreography",
     bio: "Coreografo e ballerino di urban dance. Focalizzato sullo studio della musicalità, dell'espressività corporea e sul groove.",
@@ -163,7 +157,7 @@ export const staff = [
     bio: "Ballerino professionista per produzioni video e live. Le sue lezioni uniscono precisione tecnica ed espressività da videoclip.",
   },
   {
-    name: "Ale La Scotti",
+    name: "Alice La Scotti",
     image: teacher2,
     styles: "Dancehall",
     bio: "Insegnante e ballerina specializzata nella cultura dancehall giamaicana. Porta in sala groove, attitudine e passi della street-culture.",
@@ -187,19 +181,19 @@ export const staff = [
     bio: "Esperta di danze tradizionali africane ed afrobeats. Le sue lezioni sono un viaggio intenso e liberatorio nel ritmo e nella cultura afro.",
   },
   {
-    name: "Francesca Tammaro",
+    name: "Francesca",
     image: teacher2,
     styles: "Pilates",
     bio: "Insegnante certificata di Pilates e ginnastica posturale. Focalizzata sul rinforzo profondo del core, sulla flessibilità e sulla postura.",
   },
   {
-    name: "Gloria Di Vito",
+    name: "Gloria",
     image: teacher3,
     styles: "Ballet (Danza Classica)",
     bio: "Insegnante diplomata in danza classica. Cura la formazione accademica degli allievi unendo tecnica rigorosa a passione artistica.",
   },
   {
-    name: "Eliana Reale",
+    name: "Eliana",
     image: teacher4,
     styles: "Latin Baby",
     bio: "Specializzata nelle danze caraibiche per bambini. Introduce i piccoli allievi ai ritmi latini attraverso il gioco e la coordinazione.",
