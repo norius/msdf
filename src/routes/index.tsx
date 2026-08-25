@@ -3,7 +3,6 @@ import { useState, useCallback } from "react";
 import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { toast } from "sonner";
-import { Toaster } from "@/components/ui/sonner";
 import heroImg from "@/assets/hero.jpg";
 import { days, schedule, disciplines, staff, type Day } from "@/components/dance/data";
 
@@ -52,35 +51,7 @@ function Index() {
   }, [emblaApi]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Toaster />
-
-      {/* Header */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3">
-          <div className="min-w-0">
-            <p className="display-title truncate text-xl leading-none sm:text-2xl">Dance Factory</p>
-            <p className="neon-text font-signature -mt-0.5 text-base italic sm:text-lg">marco stra</p>
-          </div>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <button onClick={() => scrollToId("orari")} className="hidden transition-colors hover:text-foreground sm:block">
-              Orari
-            </button>
-            <button onClick={() => scrollToId("corsi")} className="hidden transition-colors hover:text-foreground sm:block">
-              Corsi
-            </button>
-            <button onClick={() => scrollToId("staff")} className="hidden transition-colors hover:text-foreground md:block">
-              Staff
-            </button>
-            <button
-              onClick={() => scrollToId("contatti")}
-              className="neon-border shrink-0 rounded-full px-4 py-2 text-xs font-semibold tracking-widest text-foreground uppercase transition-transform hover:scale-105"
-            >
-              Iscriviti
-            </button>
-          </nav>
-        </div>
-      </header>
+    <>
 
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-end overflow-hidden pt-24">
@@ -417,15 +388,6 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-5 text-center">
-          <p className="display-title text-2xl">Dance Factory</p>
-          <p className="neon-text font-signature text-lg italic">marco stra</p>
-          <p className="mt-2 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Dance Factory — Tutti i diritti riservati.
-          </p>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }

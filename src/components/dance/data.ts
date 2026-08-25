@@ -211,3 +211,73 @@ export const staff = [
     bio: "Insegnante di balli di coppia caraibici. Collabora in sala con Emy per insegnare dinamiche di guida, intesa e portamento maschile.",
   },
 ];
+
+
+export const accademiaYears = ["Primo Anno", "Secondo Anno"] as const;
+export type AccademiaYear = (typeof accademiaYears)[number];
+
+export const accademiaDays = ["Lunedì", "Martedì", "Mercoledì", "Giovedì"] as const;
+export type AccademiaDay = (typeof accademiaDays)[number];
+
+export type AccademiaLesson = {
+  time: string;
+  subject: string;
+  room?: string;
+  teacher: string;
+  optional?: boolean;
+};
+
+export const accademiaSchedule: Record<AccademiaYear, Partial<Record<AccademiaDay, AccademiaLesson[]>>> = {
+  "Primo Anno": {
+    "Martedì": [
+      { time: "15:30 - 16:30", subject: "HOUSE", teacher: "Claudia" },
+      { time: "16:30 - 17:30", subject: "DANCEHALL", teacher: "Alice La Scotti" },
+      { time: "17:30 - 18:30", subject: "pausa", teacher: "" },
+      { time: "18:30 - 19:30", subject: "GUEST CLASS", teacher: "" },
+      { time: "19:30 - 20:30", subject: "COMMERCIAL", teacher: "Marco Stra" },
+    ],
+    "Mercoledì": [
+      { time: "15:30 - 16:30", subject: "BALLET", teacher: "Cristina" },
+      { time: "16:30 - 17:30", subject: "AFRO", teacher: "Nady" },
+      { time: "17:30 - 18:30", subject: "pausa", teacher: "" },
+      { time: "18:30 - 19:30", subject: "HEELS TECHNIQUE 👠", teacher: "Teresa Ferrari" },
+      { time: "19:30 - 20:30", subject: "COMMERCIAL", teacher: "Marco Stra" },
+    ],
+    "Giovedì": [
+      { time: "15:30 - 16:30", subject: "VOGUEING", teacher: "Spedix" },
+      { time: "16:30 - 17:30", subject: "HIP HOP", teacher: "Nicola" },
+      { time: "17:30 - 18:30", subject: "HEELS 👠", teacher: "Sofia Ventrella" },
+      { time: "18:30 - 19:30", subject: "pausa", teacher: "" },
+      { time: "19:30 - 20:30", subject: "MODERN", teacher: "Carolina", optional: true },
+      { time: "20:30 - 21:30", subject: "LATIN 👥", teacher: "Emy & Simone", optional: true },
+      { time: "21:30 - 22:30", subject: "LADYSTYLE 👠", teacher: "Emy", optional: true },
+    ],
+  },
+  "Secondo Anno": {
+    "Lunedì": [
+      { time: "16:30 - 17:30", subject: "HEELS 👠", teacher: "Sofia Ventrella" },
+      { time: "17:30 - 18:30", subject: "HOUSE", teacher: "Teddy" },
+      { time: "18:30 - 19:30", subject: "VOGUEING", teacher: "Spedix" },
+      { time: "20:00 - 21:00", subject: "REGGAETON", teacher: "Ronald", optional: true },
+      { time: "21:00 - 22:00", subject: "HIP HOP CONTAMINATO", teacher: "Kumo", optional: true },
+    ],
+    "Martedì": [
+      { time: "16:15 - 17:15", subject: "HIP HOP FOUNDATION", teacher: "Nicola" },
+      { time: "17:30 - 18:30", subject: "DANCEHALL", teacher: "Alice La Scotti" },
+      { time: "18:30 - 19:30", subject: "GUEST CLASS", teacher: "" },
+      { time: "19:30 - 20:30", subject: "COMMERCIAL", teacher: "Marco Stra" },
+    ],
+    "Mercoledì": [
+      { time: "16:30 - 17:30", subject: "BALLET", teacher: "Cry" },
+      { time: "17:30 - 18:30", subject: "AFRO", teacher: "Nady" },
+      { time: "18:30 - 19:30", subject: "pausa", teacher: "" },
+      { time: "19:30 - 20:30", subject: "COMMERCIAL", teacher: "Marco Stra" },
+      { time: "20:30 - 22:00", subject: "HEELS 👠", teacher: "Teresa Ferrari" },
+    ],
+    "Giovedì": [
+      { time: "19:30 - 20:30", subject: "MODERN", teacher: "Carolina", optional: true },
+      { time: "20:30 - 21:30", subject: "LATIN 👥", teacher: "Emy & Simone", optional: true },
+      { time: "21:30 - 22:30", subject: "LADYSTYLE 👠", teacher: "Emy", optional: true },
+    ],
+  },
+};
