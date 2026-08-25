@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 export function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleHomeClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -110,6 +114,133 @@ export function Header() {
               </Link>
             </>
           )}
+
+          {/* Mobile menu sheet trigger (sm:hidden) */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <button className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background text-muted-foreground transition-colors hover:text-foreground sm:hidden cursor-pointer">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Menu</span>
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] border-l border-border/60 bg-background/95 backdrop-blur-xl p-6 flex flex-col">
+              <SheetHeader className="text-left">
+                <SheetTitle>
+                  <div className="min-w-0">
+                    <p className="display-title truncate text-2xl leading-none">Dance Factory</p>
+                    <p className="neon-text font-signature -mt-0.5 text-lg italic">marco stra</p>
+                  </div>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="mt-8 flex flex-col gap-6 text-base text-muted-foreground">
+                {isHome ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        handleHomeClick();
+                        setIsOpen(false);
+                      }}
+                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Home
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleNavClick("orari");
+                        setIsOpen(false);
+                      }}
+                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Orari
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleNavClick("corsi");
+                        setIsOpen(false);
+                      }}
+                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Corsi
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleNavClick("staff");
+                        setIsOpen(false);
+                      }}
+                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Staff
+                    </button>
+                    <Link
+                      to="/accademia"
+                      onClick={() => setIsOpen(false)}
+                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Accademia
+                    </Link>
+                    <button
+                      onClick={() => {
+                        handleNavClick("contatti");
+                        setIsOpen(false);
+                      }}
+                      className="neon-border rounded-full px-4 py-3 text-center text-xs font-semibold tracking-widest text-foreground uppercase transition-transform hover:scale-105 cursor-pointer mt-4"
+                    >
+                      Iscriviti
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/"
+                      onClick={() => setIsOpen(false)}
+                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/"
+                      hash="orari"
+                      onClick={() => setIsOpen(false)}
+                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Orari
+                    </Link>
+                    <Link
+                      to="/"
+                      hash="corsi"
+                      onClick={() => setIsOpen(false)}
+                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Corsi
+                    </Link>
+                    <Link
+                      to="/"
+                      hash="staff"
+                      onClick={() => setIsOpen(false)}
+                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
+                    >
+                      Staff
+                    </Link>
+                    <Link
+                      to="/accademia"
+                      onClick={() => setIsOpen(false)}
+                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider text-primary font-medium"
+                    >
+                      Accademia
+                    </Link>
+                    <Link
+                      to="/"
+                      hash="contatti"
+                      onClick={() => setIsOpen(false)}
+                      className="neon-border rounded-full px-4 py-3 text-center text-xs font-semibold tracking-widest text-foreground uppercase transition-transform hover:scale-105 mt-4"
+                    >
+                      Iscriviti
+                    </Link>
+                  </>
+                )}
+              </div>
+            </SheetContent>
+          </Sheet>
         </nav>
       </div>
     </header>
