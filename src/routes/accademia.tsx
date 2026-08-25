@@ -167,11 +167,10 @@ function Accademia() {
               return (
                 <article
                   key={lesson.time + lesson.subject}
-                  className={`group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-lg border p-5 transition-all sm:grid-cols-[9rem_minmax(0,1fr)_auto] ${
-                    isBreak
-                      ? "border-dashed border-border/60 bg-muted/20 opacity-60"
-                      : "border-border bg-card hover:border-primary/60 hover:shadow-lg hover:shadow-primary/5"
-                  }`}
+                  className={`group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-lg border p-5 transition-all sm:grid-cols-[9rem_minmax(0,1fr)_auto] ${isBreak
+                    ? "border-dashed border-border/60 bg-muted/20 opacity-60"
+                    : "border-border bg-card hover:border-primary/60 hover:shadow-lg hover:shadow-primary/5"
+                    }`}
                 >
                   <div className={`flex items-center gap-2 text-sm font-bold ${isBreak ? "text-muted-foreground" : "text-primary"}`}>
                     <Clock className="h-4 w-4 shrink-0" />
@@ -194,11 +193,6 @@ function Accademia() {
                       </p>
                     )}
                   </div>
-                  <span className={`shrink-0 rounded-full border px-3 py-1 text-[11px] font-semibold tracking-widest uppercase ${
-                    isBreak ? "border-border/40 text-muted-foreground/60" : "border-border text-muted-foreground"
-                  }`}>
-                    {activeYear === "Primo Anno" ? "Anno 1" : "Anno 2"}
-                  </span>
                 </article>
               );
             })}
@@ -262,7 +256,7 @@ function Accademia() {
 
             <div className="neon-border mt-8 rounded-lg bg-card/60 p-5">
               <p className="text-xs font-bold tracking-[0.25em] text-primary uppercase">Segreteria Accademia</p>
-              <p className="mt-2 text-sm text-foreground/90">Lunedì – Venerdì · 10:00 – 13:00 / 15:00 – 18:00</p>
+              <p className="mt-2 text-sm text-foreground/90">Lunedì - Venerdì · 10:00 - 13:00 / 15:00 - 18:00</p>
               <p className="mt-2 text-sm text-foreground/90">accademia@dancefactory.it</p>
               <p className="text-sm text-foreground/90">+39 06 1234 5678</p>
             </div>

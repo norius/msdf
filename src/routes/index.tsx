@@ -309,7 +309,7 @@ function Index() {
 
             <div className="neon-border mt-8 rounded-lg bg-card/60 p-5">
               <p className="text-xs font-bold tracking-[0.25em] text-primary uppercase">Orari segreteria</p>
-              <p className="mt-2 text-sm text-foreground/90">Lunedì – Giovedì · 16:30 – 21:30</p>
+              <p className="mt-2 text-sm text-foreground/90">Lunedì - Giovedì · 16:30 - 21:30</p>
               <p className="mt-1 text-xs text-muted-foreground">Venerdì, sabato e domenica chiuso.</p>
             </div>
           </div>
