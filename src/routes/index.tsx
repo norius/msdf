@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useCallback } from "react";
-import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, ChevronLeft, ChevronRight, TrainFront } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
@@ -9,17 +9,17 @@ import { days, schedule, disciplines, staff, type Day } from "@/components/dance
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dance Factory | Scuola di Danza Urban — Corsi e Orari" },
+      { title: "MS Dance Factory | Scuola di Danza Urban — Corsi e Orari" },
       {
         name: "description",
         content:
-          "Dance Factory: scuola di danza urban. Hip-Hop, Dancehall, Afro, Heels, Vogueing, Commerciale e Caraibico. Orari corsi dal lunedì al giovedì e lezioni di prova gratuite.",
+          "MS Dance Factory: scuola di danza urban. Hip-Hop, Dancehall, Afro, Heels, Vogueing, Commerciale e Caraibico. Orari corsi dal lunedì al giovedì e lezioni di prova gratuite.",
       },
-      { property: "og:title", content: "Dance Factory | Scuola di Danza Urban" },
+      { property: "og:title", content: "MS Dance Factory | Scuola di Danza Urban" },
       {
         property: "og:description",
         content:
-          "Energia, ritmo e passione. Scopri corsi, insegnanti e l'orario settimanale della Dance Factory.",
+          "Energia, ritmo e passione. Scopri corsi, insegnanti e l'orario settimanale della MS Dance Factory.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -63,32 +63,39 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
-        <div className="relative mx-auto w-full max-w-6xl px-5 pb-20">
-          <p className="mb-5 text-xs font-semibold tracking-[0.35em] text-primary uppercase">
-            Scuola di danza urban
-          </p>
-          <h1 className="display-title max-w-3xl text-5xl sm:text-7xl lg:text-8xl">
-            Il ritmo è<br />
-            <span className="neon-text">energia</span> pura
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20">
+          <div className="mb-6 space-y-1">
+            <p className="text-xs sm:text-sm font-bold tracking-[0.28em] text-primary uppercase">
+              DANCE SCHOOL • ACADEMY • PERFORMANCE
+            </p>
+            <p className="text-sm sm:text-base font-medium tracking-wide text-foreground/80">
+              Una nuova realtà di danza urbana a Milano.
+            </p>
+          </div>
+
+          <h1 className="display-title neon-text max-w-4xl text-3xl min-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-8xl leading-[0.92] tracking-tight">
+            <span className="block">DANCE FIRST.</span>
+            <span className="block">THINK LATER.</span>
+            <span className="block">IT’S THE NATURAL ORDER.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Dance Factory è la fabbrica del movimento: sale attrezzate, insegnanti professionisti e sette
-            discipline dall'hip-hop al caraibico. Qui la passione diventa tecnica.
+
+          <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg leading-relaxed">
+            A Rho, alle porte di Milano, uno spazio in cui passione, tecnica e personalità prendono forma. Corsi per ogni età e livello, insegnanti professionisti e percorsi che portano dalla sala al palcoscenico.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <button
-              onClick={() => scrollToId("orari")}
-              className="neon-glow group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-105"
+              onClick={() => scrollToId("corsi")}
+              className="neon-glow group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-sm font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-105 cursor-pointer"
             >
-              Consulta l'Orario Corsi
+              Scopri i nostri corsi
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button
-              onClick={() => scrollToId("corsi")}
-              className="rounded-full border border-border px-7 py-4 text-sm font-bold tracking-widest uppercase transition-colors hover:bg-secondary"
+              onClick={() => scrollToId("orari")}
+              className="rounded-full border border-border px-7 py-4 text-sm font-bold tracking-widest uppercase transition-colors hover:bg-secondary cursor-pointer"
             >
-              Le discipline
+              Orario corsi
             </button>
           </div>
 
@@ -171,7 +178,7 @@ function Index() {
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={d.image}
-                    alt={`Lezione di ${d.name} alla Dance Factory`}
+                    alt={`Lezione di ${d.name} alla MS Dance Factory`}
                     width={800}
                     height={1000}
                     loading="lazy"
@@ -232,7 +239,7 @@ function Index() {
                   <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60">
                     <img
                       src={p.image}
-                      alt={`Ritratto di ${p.name}, insegnante Dance Factory`}
+                      alt={`Ritratto di ${p.name}, insegnante MS Dance Factory`}
                       width={700}
                       height={700}
                       loading="lazy"
@@ -257,11 +264,10 @@ function Index() {
       <section id="contatti" className="scroll-mt-24 border-t border-border py-20 sm:py-28">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
           <div>
-            <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">Segreteria</span>
-            <h2 className="display-title mt-4 text-4xl sm:text-5xl">Contatti & iscrizioni</h2>
+            <h2 className="display-title font-bold text-4xl sm:text-5xl">CONTACT US</h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Vuoi informazioni sui corsi o prenotare la prova della prima settimana? Scrivici, la segreteria
-              risponde entro 24 ore.
+              Non sai quale corso scegliere? Ti aiutiamo a trovare il percorso più adatto al tuo livello e ai tuoi
+              obiettivi. Scrivici per informazioni su corsi, disponibilità e iscrizioni.
             </p>
 
             <ul className="mt-8 space-y-4 text-sm">
@@ -288,10 +294,10 @@ function Index() {
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <a
-                  href="mailto:info@dancefactory.it"
+                  href="mailto:msdancefactory2021@gmail.com"
                   className="transition-colors hover:text-primary cursor-pointer"
                 >
-                  info@dancefactory.it
+                  msdancefactory2021@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -305,12 +311,21 @@ function Index() {
                   @msdancefactory
                 </a>
               </li>
+              <li className="flex items-start gap-3 pt-2">
+                <TrainFront className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <div>
+                  <span className="font-semibold text-foreground">Come raggiungerci?</span>
+                  <p className="mt-0.5 text-muted-foreground leading-relaxed">
+                    Metropolitana M1 Rossa — Fermata Rho Fiera — Uscita in Via Risorgimento + 10min a piedi
+                  </p>
+                </div>
+              </li>
             </ul>
 
             <div className="neon-border mt-8 rounded-lg bg-card/60 p-5">
-              <p className="text-xs font-bold tracking-[0.25em] text-primary uppercase">Orari segreteria</p>
-              <p className="mt-2 text-sm text-foreground/90">Lunedì - Giovedì · 16:30 - 21:30</p>
-              <p className="mt-1 text-xs text-muted-foreground">Venerdì, sabato e domenica chiuso.</p>
+              <p className="text-xs font-bold tracking-[0.25em] text-primary uppercase">Orari Direzione MSDF</p>
+              <p className="mt-2 text-sm text-foreground/90">Dal Lunedì al Giovedì dalle 15:30 alle 20:00.</p>
+              <p className="mt-1 text-xs text-muted-foreground">Venerdì, Sabato e Domenica chiuso.</p>
             </div>
           </div>
 

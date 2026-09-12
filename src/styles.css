@@ -85,7 +85,8 @@
   text-shadow:
     0 0 4px color-mix(in oklab, var(--neon) 90%, transparent),
     0 0 14px color-mix(in oklab, var(--neon) 70%, transparent),
-    0 0 32px color-mix(in oklab, var(--neon) 50%, transparent);
+    0 0 32px color-mix(in oklab, var(--neon) 50%, transparent),
+    0 0 60px color-mix(in oklab, var(--neon) 30%, transparent);
 }
 
 @utility neon-border {
@@ -107,9 +108,23 @@
 }
 
 @utility grain-fade {
-  background-image: radial-gradient(
-    circle at 50% 0%,
-    color-mix(in oklab, var(--neon) 12%, transparent),
-    transparent 60%
-  );
+  background-image: radial-gradient(circle at 50% 0%,
+      color-mix(in oklab, var(--neon) 12%, transparent),
+      transparent 60%);
+}
+
+@keyframes logoFadePulse {
+
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@utility animate-logo-pulse {
+  animation: logoFadePulse 5s ease-in-out infinite;
 }

@@ -20,13 +20,13 @@ import { accademiaYears, accademiaSchedule, type AccademiaYear, type AccademiaDa
 export const Route = createFileRoute("/accademia")({
   head: () => ({
     meta: [
-      { title: "Accademia Dance Factory | Percorso Professionale di Danza" },
+      { title: "Accademia MS Dance Factory | Percorso Professionale di Danza" },
       {
         name: "description",
         content:
-          "Percorso accademico Dance Factory: formazione professionale intensiva in Hip-Hop, Dancehall, Afro e altro. Primo e Secondo anno, ammissioni e audizioni.",
+          "Percorso accademico MS Dance Factory: formazione professionale intensiva in Hip-Hop, Dancehall, Afro e altro. Primo e Secondo anno, ammissioni e audizioni.",
       },
-      { property: "og:title", content: "Accademia Dance Factory | Percorso Professionale di Danza" },
+      { property: "og:title", content: "Accademia MS Dance Factory | Percorso Professionale di Danza" },
       {
         property: "og:description",
         content:
@@ -69,7 +69,7 @@ function Accademia() {
           className="absolute inset-0 h-full w-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
-        <div className="relative mx-auto w-full max-w-6xl px-5 pb-20">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-20">
           <p className="mb-5 text-xs font-semibold tracking-[0.35em] text-primary uppercase">
             Percorso professionale
           </p>
@@ -231,7 +231,7 @@ function Accademia() {
             <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">Ammissioni</span>
             <h2 className="display-title mt-4 text-4xl sm:text-5xl">Info & candidature</h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              L'Accademia Dance Factory è a numero chiuso. Per accedere al corso biennale è necessario
+              L'Accademia MS Dance Factory è a numero chiuso. Per accedere al corso biennale è necessario
               superare un colloquio conoscitivo e una prova pratica.
             </p>
 

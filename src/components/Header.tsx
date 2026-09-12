@@ -21,13 +21,13 @@ export function Header() {
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3">
         {isHome ? (
           <button onClick={handleHomeClick} className="min-w-0 hover:opacity-90 transition-opacity text-left cursor-pointer">
-            <p className="display-title truncate text-xl leading-none sm:text-2xl">Dance Factory</p>
-            <p className="neon-text font-signature -mt-0.5 text-base italic sm:text-lg">marco stra</p>
+            <p className="display-title truncate text-xl leading-none sm:text-2xl">MS DANCE FACTORY</p>
+            <p className="neon-text font-signature -mt-0.5 text-base italic sm:text-lg">Marco Stra</p>
           </button>
         ) : (
           <Link to="/" className="min-w-0 hover:opacity-90 transition-opacity">
-            <p className="display-title truncate text-xl leading-none sm:text-2xl">Dance Factory</p>
-            <p className="neon-text font-signature -mt-0.5 text-base italic sm:text-lg">marco stra</p>
+            <p className="display-title truncate text-xl leading-none sm:text-2xl">MS DANCE FACTORY</p>
+            <p className="neon-text font-signature -mt-0.5 text-base italic sm:text-lg">Marco Stra</p>
           </Link>
         )}
         <nav className="flex items-center gap-6 text-sm text-muted-foreground">
@@ -62,6 +62,18 @@ export function Header() {
                 className="hidden transition-colors hover:text-foreground sm:block"
               >
                 Accademia
+              </Link>
+              <Link
+                to="/about"
+                className="hidden transition-colors hover:text-foreground sm:block"
+              >
+                About us
+              </Link>
+              <Link
+                to="/shop"
+                className="hidden transition-colors hover:text-foreground sm:block"
+              >
+                Shop
               </Link>
               <button
                 onClick={() => handleNavClick("contatti")}
@@ -101,9 +113,27 @@ export function Header() {
               </Link>
               <Link
                 to="/accademia"
-                className="hidden transition-colors hover:text-foreground sm:block text-primary font-medium"
+                className={`hidden transition-colors sm:block ${
+                  location.pathname === "/accademia" ? "text-primary font-medium" : "hover:text-foreground"
+                }`}
               >
                 Accademia
+              </Link>
+              <Link
+                to="/about"
+                className={`hidden transition-colors sm:block ${
+                  location.pathname === "/about" ? "text-primary font-medium" : "hover:text-foreground"
+                }`}
+              >
+                About us
+              </Link>
+              <Link
+                to="/shop"
+                className={`hidden transition-colors sm:block ${
+                  location.pathname === "/shop" ? "text-primary font-medium" : "hover:text-foreground"
+                }`}
+              >
+                Shop
               </Link>
               <Link
                 to="/"
@@ -127,117 +157,48 @@ export function Header() {
               <SheetHeader className="text-left">
                 <SheetTitle>
                   <div className="min-w-0">
-                    <p className="display-title truncate text-2xl leading-none">Dance Factory</p>
-                    <p className="neon-text font-signature -mt-0.5 text-lg italic">marco stra</p>
+                    <p className="display-title truncate text-2xl leading-none">MS DANCE FACTORY</p>
+                    <p className="neon-text font-signature -mt-0.5 text-lg italic">Marco Stra</p>
                   </div>
                 </SheetTitle>
               </SheetHeader>
               <div className="mt-8 flex flex-col gap-6 text-base text-muted-foreground">
-                {isHome ? (
-                  <>
-                    <button
-                      onClick={() => {
-                        handleHomeClick();
-                        setIsOpen(false);
-                      }}
-                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Home
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleNavClick("orari");
-                        setIsOpen(false);
-                      }}
-                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Orari
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleNavClick("corsi");
-                        setIsOpen(false);
-                      }}
-                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Corsi
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleNavClick("staff");
-                        setIsOpen(false);
-                      }}
-                      className="text-left transition-colors hover:text-foreground cursor-pointer text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Staff
-                    </button>
-                    <Link
-                      to="/accademia"
-                      onClick={() => setIsOpen(false)}
-                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Accademia
-                    </Link>
-                    <button
-                      onClick={() => {
-                        handleNavClick("contatti");
-                        setIsOpen(false);
-                      }}
-                      className="neon-border rounded-full px-4 py-3 text-center text-xs font-semibold tracking-widest text-foreground uppercase transition-transform hover:scale-105 cursor-pointer mt-4"
-                    >
-                      Iscriviti
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      to="/"
-                      onClick={() => setIsOpen(false)}
-                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      to="/"
-                      hash="orari"
-                      onClick={() => setIsOpen(false)}
-                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Orari
-                    </Link>
-                    <Link
-                      to="/"
-                      hash="corsi"
-                      onClick={() => setIsOpen(false)}
-                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Corsi
-                    </Link>
-                    <Link
-                      to="/"
-                      hash="staff"
-                      onClick={() => setIsOpen(false)}
-                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider"
-                    >
-                      Staff
-                    </Link>
-                    <Link
-                      to="/accademia"
-                      onClick={() => setIsOpen(false)}
-                      className="transition-colors hover:text-foreground text-lg font-semibold uppercase tracking-wider text-primary font-medium"
-                    >
-                      Accademia
-                    </Link>
-                    <Link
-                      to="/"
-                      hash="contatti"
-                      onClick={() => setIsOpen(false)}
-                      className="neon-border rounded-full px-4 py-3 text-center text-xs font-semibold tracking-widest text-foreground uppercase transition-transform hover:scale-105 mt-4"
-                    >
-                      Iscriviti
-                    </Link>
-                  </>
-                )}
+                <Link
+                  to="/"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
+                    location.pathname === "/" ? "text-primary" : "hover:text-foreground"
+                  }`}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/accademia"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
+                    location.pathname === "/accademia" ? "text-primary" : "hover:text-foreground"
+                  }`}
+                >
+                  Accademia
+                </Link>
+                <Link
+                  to="/about"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
+                    location.pathname === "/about" ? "text-primary" : "hover:text-foreground"
+                  }`}
+                >
+                  About us
+                </Link>
+                <Link
+                  to="/shop"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
+                    location.pathname === "/shop" ? "text-primary" : "hover:text-foreground"
+                  }`}
+                >
+                  Shop
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

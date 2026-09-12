@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Toaster } from "../components/ui/sonner";
+import { BackgroundLogo } from "../components/BackgroundLogo";
 
 function NotFoundComponent() {
   return (
@@ -77,10 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dance Factory | Scuola di Danza Urban" },
+      { title: "MS Dance Factory | Scuola di Danza Urban" },
       {
         name: "description",
-        content: "Scuola di danza urban Dance Factory: corsi, orari e insegnanti.",
+        content: "Scuola di danza urban MS Dance Factory: corsi, orari e insegnanti.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -125,21 +126,20 @@ function RootComponent() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.hash) {
-      const hashId = location.hash.replace("#", "");
-      const element = document.getElementById(hashId);
-      if (element) {
-        const timer = setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 150);
-        return () => clearTimeout(timer);
-      }
-    }
+    if (!location.hash) return;
+    const hashId = location.hash.replace("#", "");
+    const element = document.getElementById(hashId);
+    if (!element) return;
+    const timer = setTimeout(() => {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 150);
+    return () => clearTimeout(timer);
   }, [location.hash, location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-background flex flex-col">
+      <div className="min-h-screen bg-background flex flex-col relative">
+        <BackgroundLogo />
         <Header />
         <main className="flex-grow">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}

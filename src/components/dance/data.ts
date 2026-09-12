@@ -30,7 +30,7 @@ export const schedule: Record<Day, Lesson[]> = {
     { time: "20:00 - 21:00", course: "Vogueing (14+)", room: "Sala 1", teacher: "Spedix", level: "Open" },
     { time: "20:00 - 21:00", course: "Reggaeton (14+)", room: "Sala 2", teacher: "Ronald", level: "Principianti" },
     { time: "21:00 - 22:00", course: "Donne Alla Riscossa (18+)", room: "Sala 1", teacher: "Marco Stra", level: "Open" },
-    { time: "21:00 - 22:00", course: "Hip Hop Choreography (14+)", room: "Sala 2", teacher: "Kuma", level: "Open" },
+    { time: "21:00 - 22:00", course: "Hip Hop Choreography (14+)", room: "Sala 2", teacher: "Kumo", level: "Open" },
   ],
   Martedì: [
     { time: "17:30 - 18:30", course: "Afro Young (8+)", room: "Sala 1", teacher: "Sofia Derivi", level: "Open" },
@@ -102,7 +102,7 @@ export const disciplines = [
   {
     name: "Hip-Hop",
     image: hiphop,
-    description: "Groove, freestyle e coreografia con Marco Stra e Kuma. Include lezioni di Streetdance.",
+    description: "Groove, freestyle e coreografia con Marco Stra e Kumo. Include lezioni di Streetdance.",
     levels: ["Kids", "Open", "Avanzato"],
   },
 ];
