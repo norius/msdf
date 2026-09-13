@@ -246,7 +246,7 @@ function Accademia() {
               <p className="display-title text-4xl text-primary">296 MQ</p>
               <h3 className="display-title text-xl mt-2">Spazio Totale</h3>
               <p className="mt-2 text-xs text-muted-foreground">
-                Sale ampie fino a 240 mq, con altezze e metrature ideali per coreografie di gruppo e produzioni video.
+                Sale ampie fino a 296 mq, con altezze e metrature ideali per coreografie di gruppo e produzioni video.
               </p>
             </div>
 
@@ -497,11 +497,10 @@ function Accademia() {
               return (
                 <article
                   key={lesson.time + lesson.subject}
-                  className={`group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-xl border p-5 transition-all sm:grid-cols-[10rem_minmax(0,1fr)_auto] ${
-                    isBreak
-                      ? "border-dashed border-border/60 bg-muted/20 opacity-60"
-                      : "border-border bg-card hover:border-primary/60 hover:shadow-lg hover:shadow-primary/5"
-                  }`}
+                  className={`group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-xl border p-5 transition-all sm:grid-cols-[10rem_minmax(0,1fr)_auto] ${isBreak
+                    ? "border-dashed border-border/60 bg-muted/20 opacity-60"
+                    : "border-border bg-card hover:border-primary/60 hover:shadow-lg hover:shadow-primary/5"
+                    }`}
                 >
                   <div className={`flex items-center gap-2 text-sm font-bold ${isBreak ? "text-muted-foreground" : "text-primary"}`}>
                     <Clock className="h-4 w-4 shrink-0" />
@@ -572,13 +571,6 @@ function Accademia() {
                   <span>Include kit merchandising ufficiale</span>
                 </li>
               </ul>
-
-              <button
-                onClick={() => scrollToId("casting")}
-                className="neon-glow mt-8 w-full rounded-full bg-primary py-3.5 text-xs font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-102 cursor-pointer"
-              >
-                Seleziona questa opzione
-              </button>
             </div>
 
             {/* Opzione 2 */}
@@ -614,13 +606,6 @@ function Accademia() {
                   <span><strong>€700</strong> entro il 30 Marzo</span>
                 </li>
               </ul>
-
-              <button
-                onClick={() => scrollToId("casting")}
-                className="mt-8 w-full rounded-full border border-border bg-secondary/50 py-3.5 text-xs font-bold tracking-widest text-foreground uppercase transition-colors hover:bg-primary hover:text-primary-foreground cursor-pointer"
-              >
-                Richiedi piano rateale
-              </button>
             </div>
 
             {/* Opzione 3 */}
@@ -656,13 +641,6 @@ function Accademia() {
                   <span>Saldo finale entro il 15 Maggio</span>
                 </li>
               </ul>
-
-              <button
-                onClick={() => scrollToId("casting")}
-                className="mt-8 w-full rounded-full border border-border bg-secondary/50 py-3.5 text-xs font-bold tracking-widest text-foreground uppercase transition-colors hover:bg-primary hover:text-primary-foreground cursor-pointer"
-              >
-                Richiedi piano mensile
-              </button>
             </div>
           </div>
         </div>
