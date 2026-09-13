@@ -1,10 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState, useCallback } from "react";
-import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, ChevronLeft, ChevronRight, TrainFront } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, TrainFront } from "lucide-react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
-import { days, schedule, disciplines, staff, type Day } from "@/components/dance/data";
+import { days, schedule, disciplines, type Day } from "@/components/dance/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,20 +34,6 @@ function scrollToId(id: string) {
 function Index() {
   const [activeDay, setActiveDay] = useState<Day>("Lunedì");
   const [sent, setSent] = useState(false);
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
-    containScroll: "trimSnaps",
-    dragFree: true,
-  });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
 
   return (
     <>
@@ -206,56 +191,30 @@ function Index() {
         </div>
       </section>
 
-      {/* Staff */}
-      <section id="staff" className="grain-fade scroll-mt-24 border-t border-border py-20 sm:py-28">
+      {/* Staff Preview Banner */}
+      <section className="grain-fade border-t border-border py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-5">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">Staff</span>
-              <h2 className="display-title mt-4 text-4xl sm:text-5xl">I nostri maestri</h2>
+          <div className="neon-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl bg-card/60 p-8 sm:p-12 backdrop-blur">
+            <div className="max-w-xl">
+              <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">
+                Corpo Docenti Ufficiale
+              </span>
+              <h2 className="display-title mt-2 text-3xl sm:text-4xl lg:text-5xl">
+                I Nostri Insegnanti
+              </h2>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                Danzatori professionisti, coreografi televisivi e protagonisti della scena urban e accademica.
+                Scopri tutti i docenti della scuola e del percorso di alta formazione professionale.
+              </p>
             </div>
-            <div className="flex gap-2">
-              <button
-                onClick={scrollPrev}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground hover:scale-105 active:scale-95 cursor-pointer"
-                aria-label="Insegnante precedente"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={scrollNext}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground hover:scale-105 active:scale-95 cursor-pointer"
-                aria-label="Insegnante successivo"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-10 overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
-            <div className="flex gap-5">
-              {staff.map((p) => (
-                <div key={p.name} className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_23.5%]">
-                  <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/60">
-                    <img
-                      src={p.image}
-                      alt={`Ritratto di ${p.name}, insegnante MS Dance Factory`}
-                      width={700}
-                      height={700}
-                      loading="lazy"
-                      className="aspect-square w-full object-cover"
-                    />
-                    <div className="flex flex-1 flex-col p-5">
-                      <h3 className="display-title text-2xl">{p.name}</h3>
-                      <p className="mt-1 text-xs font-semibold tracking-widest text-primary uppercase">
-                        {p.styles}
-                      </p>
-                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.bio}</p>
-                    </div>
-                  </article>
-                </div>
-              ))}
-            </div>
+            <Link
+              to="/about"
+              hash="staff"
+              className="neon-glow inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-xs font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-105 shrink-0"
+            >
+              Scopri il corpo docenti
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles, Users, Award, Flame, Heart, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useState, useCallback, useEffect } from "react";
+import { Sparkles, Users, Award, Flame, Heart, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import heroImg from "@/assets/hero.jpg";
 import teacher1 from "@/assets/teacher1.jpg";
+import { staff, type StaffRole } from "@/components/dance/data";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -10,7 +13,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Scopri la storia, i valori e la visione di MS Dance Factory a Rho (Milano). Fondata da Marco Stra: passione, tecnica urban, inclusività e percorsi accademici.",
+          "Scopri la storia, i valori e il corpo docenti di MS Dance Factory a Rho (Milano). Fondata da Marco Stra: passione, tecnica urban, inclusività e percorsi accademici.",
       },
       { property: "og:title", content: "About Us | MS Dance Factory" },
       {
@@ -25,6 +28,33 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const [selectedTag, setSelectedTag] = useState<"Tutti" | StaffRole>("Tutti");
+
+  const filteredStaff =
+    selectedTag === "Tutti"
+      ? staff
+      : staff.filter((member) => member.tags.includes(selectedTag));
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    containScroll: "trimSnaps",
+    dragFree: true,
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit();
+      emblaApi.scrollTo(0);
+    }
+  }, [selectedTag, emblaApi]);
   return (
     <>
       {/* Hero About */}
@@ -175,6 +205,116 @@ function AboutPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Showcase, contest, videoclip ed eventi dal vivo: percorsi reali che collegano l'allenamento al mondo professionale.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Staff & Maestri */}
+      <section id="staff" className="scroll-mt-24 border-t border-border py-20 sm:py-28 grain-fade">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">I Nostri Maestri</span>
+              <h2 className="display-title mt-2 text-4xl sm:text-5xl">Il Corpo Docenti</h2>
+              <p className="mt-3 max-w-xl text-sm text-muted-foreground">
+                Professionisti della scena urban, performer televisivi e maestri accademici.
+                Filtra per visualizzare i docenti della scuola aperta a tutti o del percorso accademico.
+              </p>
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex flex-wrap gap-2 sm:justify-end">
+              {(["Tutti", "Scuola", "Accademia"] as const).map((tag) => {
+                const count =
+                  tag === "Tutti"
+                    ? staff.length
+                    : staff.filter((s) => s.tags.includes(tag)).length;
+                const isSelected = selectedTag === tag;
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag)}
+                    className={
+                      isSelected
+                        ? "neon-glow rounded-full bg-primary px-4 py-2 text-xs font-bold tracking-widest text-primary-foreground uppercase shadow-md cursor-pointer transition-transform scale-102"
+                        : "rounded-full border border-border bg-card px-4 py-2 text-xs font-bold tracking-widest text-muted-foreground uppercase transition-colors hover:text-foreground hover:bg-secondary/40 cursor-pointer"
+                    }
+                  >
+                    {tag} <span className="ml-1 opacity-75 text-[10px]">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Carousel Arrows - Situated directly above the photos */}
+          <div className="mt-8 flex items-center justify-end gap-2">
+            <button
+              onClick={scrollPrev}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
+              aria-label="Insegnante precedente"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/60 hover:text-foreground hover:scale-105 active:scale-95 cursor-pointer shadow-sm"
+              aria-label="Insegnante successivo"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Teachers Carousel */}
+          <div className="mt-3 overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+            <div className="flex gap-5">
+              {filteredStaff.map((teacher) => (
+                <div
+                  key={teacher.name}
+                  className="min-w-0 flex-[0_0_85%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_23.5%]"
+                >
+                  <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-xl">
+                    <div className="relative aspect-square overflow-hidden bg-secondary/30">
+                      <img
+                        src={teacher.image}
+                        alt={`Ritratto di ${teacher.name}, docente MS Dance Factory`}
+                        width={700}
+                        height={700}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
+
+                      {/* Tags badge */}
+                      <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                        {teacher.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className={
+                              tag === "Accademia"
+                                ? "neon-glow rounded-full bg-primary px-2.5 py-0.5 text-[9px] font-extrabold tracking-widest text-primary-foreground uppercase shadow-md"
+                                : "rounded-full bg-secondary/90 border border-border px-2.5 py-0.5 text-[9px] font-bold tracking-widest text-foreground/90 uppercase backdrop-blur"
+                            }
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-5">
+                      <h3 className="display-title text-2xl">{teacher.name}</h3>
+                      <p className="mt-1 text-xs font-semibold tracking-wider text-primary uppercase">
+                        {teacher.styles}
+                      </p>
+                      <p className="mt-3 text-xs leading-relaxed text-muted-foreground flex-1">
+                        {teacher.bio}
+                      </p>
+                    </div>
+                  </article>
+                </div>
+              ))}
             </div>
           </div>
         </div>

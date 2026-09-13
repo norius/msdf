@@ -107,110 +107,146 @@ export const disciplines = [
   },
 ];
 
-export const staff = [
+export type StaffRole = "Scuola" | "Accademia";
+
+export type StaffMember = {
+  name: string;
+  image: string;
+  styles: string;
+  bio: string;
+  tags: StaffRole[];
+};
+
+export const staff: StaffMember[] = [
   {
     name: "Marco Stra",
     image: teacher1,
-    styles: "Hip-Hop · Commerciale",
-    bio: "Fondatore e direttore artistico di MS Dance Factory. Coreografo di successo, guida le crew della scuola nei contest nazionali e internazionali.",
+    styles: "Commercial · Hip-Hop",
+    bio: "Fondatore e direttore artistico di MS Dance Factory e MSDF Academy. Coreografo e performer di riferimento nel settore.",
+    tags: ["Scuola", "Accademia"],
   },
   {
-    name: "Spedix",
-    image: teacher2,
-    styles: "Vogueing · Waacking",
-    bio: "Padre fondatore della Kiki House of Dipstars e icona della ballroom scene italiana. Porta in sala l'autentica cultura e attitudine del voguing.",
-  },
-  {
-    name: "Sofia Derivi",
+    name: "Teresa Ferrari",
     image: teacher3,
-    styles: "Afro · Afrobeats",
-    bio: "Ballerina professionista ed ex concorrente televisiva. Specializzata in danze africane, unisce tecnica moderna a groove tradizionale.",
-  },
-  {
-    name: "Emy Codebò",
-    image: teacher4,
-    styles: "Heels · Caraibici · Ladystyle",
-    bio: "Insegnante certificata di Heels e danze caraibiche. Specialista in portamento femminile, unisce sensualità e precisione tecnica.",
-  },
-  {
-    name: "Kry Brambilla",
-    image: teacher1,
-    styles: "Baby Ballet · Propedeutica",
-    bio: "Specializzata nell'insegnamento infantile. Coniuga gioco e basi della danza classica per avvicinare i piccolissimi (3-5 anni) al movimento.",
-  },
-  {
-    name: "Ronald",
-    image: teacher3,
-    styles: "Reggaeton",
-    bio: "Esperto di danze caraibiche e reggaeton. Le sue classi uniscono ritmo, energia urbana e tanto divertimento.",
+    styles: "Heels Technique",
+    bio: "Docente d'eccellenza per lo studio della tecnica pura, dell'allineamento posturale e dell'impostazione sui tacchi per performer.",
+    tags: ["Accademia"],
   },
   {
     name: "Kumo",
     image: teacher4,
-    styles: "Hip-Hop Choreography",
-    bio: "Coreografo e ballerino di urban dance. Focalizzato sullo studio della musicalità, dell'espressività corporea e sul groove.",
-  },
-  {
-    name: "Edoardo Bottigelli",
-    image: teacher1,
-    styles: "Commerciale",
-    bio: "Ballerino professionista per produzioni video e live. Le sue lezioni uniscono precisione tecnica ed espressività da videoclip.",
-  },
-  {
-    name: "Alice La Scotti",
-    image: teacher2,
-    styles: "Dancehall",
-    bio: "Insegnante e ballerina specializzata nella cultura dancehall giamaicana. Porta in sala groove, attitudine e passi della street-culture.",
+    styles: "Contaminazione",
+    bio: "Coreografo e ballerino urban di successo. Focalizzato su musicalità ad alta definizione, groove.",
+    tags: ["Scuola", "Accademia"],
   },
   {
     name: "Sofia Ventrella",
     image: teacher3,
-    styles: "Heels Stiletto",
-    bio: "Insegnante e ballerina heels. Focalizzata sullo studio del portamento sui tacchi a spillo, sulla postura e sulla sensualità coreografica.",
+    styles: "Coreografico · Heels Stiletto",
+    bio: "Insegnante e ballerina heels e classica. Unisce la disciplina del ballet all'attitudine e alla sensualità sui tacchi a spillo.",
+    tags: ["Scuola", "Accademia"],
   },
   {
-    name: "Silvia",
+    name: "Cristina Brambilla",
+    image: teacher2,
+    styles: "Ballet · Baby Ballet",
+    bio: "Docente di tecnica accademica pura e propedeutica al perfezionamento tecnico per ballerini professionisti.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Francesco Vanella",
+    image: teacher1,
+    styles: "Hip Hop",
+    bio: "Ballerino professionista e formatore Hip Hop. Cura foundation, isolazioni, groove profondo e attitudine da palcoscenico.",
+    tags: ["Accademia"],
+  },
+  {
+    name: "Teddy Fonzarelli",
+    image: teacher2,
+    styles: "House",
+    bio: "Pioniere della House Dance. Insegna footwork, jacking, lofting e la complessa ritmica della musica elettronica e clubbing.",
+    tags: ["Accademia"],
+  },
+  {
+    name: "Carolina Bianco",
+    image: teacher1,
+    styles: "Modern · Contemporary",
+    bio: "Insegnante di Modern Contemporary. Lavora sulla fluidità cinetica, sul floorwork e sulla profonda consapevolezza espressiva.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Emy Codebò",
     image: teacher4,
-    styles: "Country Line Dance",
-    bio: "Insegnante qualificata di danza country western. Conduce le lezioni di Country Line Dance con entusiasmo, ritmo e socializzazione.",
+    styles: "Caraibico · Heels · Ladystyle",
+    bio: "Docente certificata di Heels e danze caraibiche. Specialista in portamento scenico, coordinazione ritmica ed eleganza performativa.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Francesca",
+    image: teacher2,
+    styles: "Preparazione atletica & estetica · Pilates",
+    bio: "Preparatrice atletica specifica per danzatori e ballerina dancehall. Sviluppa potenza muscolare, flessibilità e tenuta scenica.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Ronald Guzman",
+    image: teacher3,
+    styles: "Reggaeton",
+    bio: "Performer ed esperto di sonorità urbane latine e caraibiche. Trasmette energia pura, dinamica di movimento e ritmo travolgente.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Sofia Derivi",
+    image: teacher3,
+    styles: "Afroyoung",
+    bio: "Ballerina professionista ed ex concorrente televisiva. Specializzata in danze africane, unisce tecnica moderna a groove tradizionale.",
+    tags: ["Scuola"],
+  },
+  {
+    name: "Edoardo Bottigelli",
+    image: teacher1,
+    styles: "Commercial Beginners",
+    bio: "Ballerino professionista per produzioni video e live. Le sue lezioni uniscono precisione tecnica ed espressività da videoclip.",
+    tags: ["Scuola"],
   },
   {
     name: "Nady",
     image: teacher1,
     styles: "Afro",
-    bio: "Esperta di danze tradizionali africane ed afrobeats. Le sue lezioni sono un viaggio intenso e liberatorio nel ritmo e nella cultura afro.",
-  },
-  {
-    name: "Francesca",
-    image: teacher2,
-    styles: "Pilates",
-    bio: "Insegnante certificata di Pilates e ginnastica posturale. Focalizzata sul rinforzo profondo del core, sulla flessibilità e sulla postura.",
+    bio: "Esperta di danze tradizionali africane ed afrobeats. Un viaggio intenso e liberatorio nel ritmo e nella cultura afro.",
+    tags: ["Scuola", "Accademia"],
   },
   {
     name: "Gloria",
     image: teacher3,
-    styles: "Ballet (Danza Classica)",
-    bio: "Insegnante diplomata in danza classica. Cura la formazione accademica degli allievi unendo tecnica rigorosa a passione artistica.",
+    styles: "Ballet Young",
+    bio: "Insegnante diplomata in danza classica. Cura la formazione propedeutica e accademica dei più giovani con rigore e dolcezza.",
+    tags: ["Scuola"],
   },
   {
     name: "Eliana",
     image: teacher4,
     styles: "Latin Baby",
     bio: "Specializzata nelle danze caraibiche per bambini. Introduce i piccoli allievi ai ritmi latini attraverso il gioco e la coordinazione.",
-  },
-  {
-    name: "Carolina Bianco",
-    image: teacher1,
-    styles: "Modern",
-    bio: "Insegnante di Modern Contemporary. Le sue lezioni lavorano sulla fluidità, sul floorwork e sullo sviluppo dell'espressività scenica.",
+    tags: ["Scuola"],
   },
   {
     name: "Simone",
     image: teacher2,
     styles: "Caraibici · Salsa & Bachata",
-    bio: "Insegnante di balli di coppia caraibici. Collabora in sala con Emy per insegnare dinamiche di guida, intesa e portamento maschile.",
+    bio: "Insegnante di balli caraibici di coppia. Insegna dinamiche di guida, intesa, portamento maschile e sincronia di sala.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Silvia",
+    image: teacher4,
+    styles: "Country",
+    bio: "Insegnante qualificata di danza country western. Conduce le lezioni di Country Line Dance con ritmo, energia e socializzazione.",
+    tags: ["Scuola"],
   },
 ];
+
+export const academyTeachers = staff.filter((t) => t.tags.includes("Accademia"));
 
 
 export const accademiaYears = ["Primo Anno", "Secondo Anno"] as const;

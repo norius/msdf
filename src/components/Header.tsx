@@ -51,12 +51,13 @@ export function Header() {
               >
                 Corsi
               </button>
-              <button
-                onClick={() => handleNavClick("staff")}
-                className="hidden transition-colors hover:text-foreground md:block cursor-pointer"
+              <Link
+                to="/about"
+                hash="staff"
+                className="hidden transition-colors hover:text-foreground md:block"
               >
                 Staff
-              </button>
+              </Link>
               <Link
                 to="/accademia"
                 className="hidden transition-colors hover:text-foreground sm:block"
@@ -105,7 +106,7 @@ export function Header() {
                 Corsi
               </Link>
               <Link
-                to="/"
+                to="/about"
                 hash="staff"
                 className="hidden transition-colors hover:text-foreground md:block"
               >
@@ -189,6 +190,14 @@ export function Header() {
                   }`}
                 >
                   About us
+                </Link>
+                <Link
+                  to="/about"
+                  hash="staff"
+                  onClick={() => setIsOpen(false)}
+                  className="text-left transition-colors text-xl font-semibold uppercase tracking-wider hover:text-foreground"
+                >
+                  Staff
                 </Link>
                 <Link
                   to="/shop"
