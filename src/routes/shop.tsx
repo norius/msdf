@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Sparkles, ShieldCheck, MapPin } from "lucide-react";
-import hoodieImg from "@/assets/shop-hoodie.jpg";
-import tshirtImg from "@/assets/shop-tshirt.jpg";
+import felpaImg from "@/assets/felpa.jpeg";
+import magliettaImg from "@/assets/maglietta.jpeg";
+import pantaloneImg from "@/assets/pantalone.jpeg";
+import topImg from "@/assets/top.jpeg";
 import bagImg from "@/assets/shop-bag.jpeg";
 import heroImg from "@/assets/hero.jpg";
 
@@ -13,7 +15,7 @@ export const Route = createFileRoute("/shop")({
       {
         name: "description",
         content:
-          "Lo shop ufficiale di MS Dance Factory. Felpe oversize, t-shirt vintage, borsoni e accessori dance firmati Marco Stra. Disponibili per il ritiro a Rho (Milano).",
+          "Lo shop ufficiale di MS Dance Factory. Felpe oversize, t-shirt, top crop, pantaloni baggy e borsoni firmati Marco Stra. Disponibili per il ritiro a Rho (Milano).",
       },
       { property: "og:title", content: "Shop Ufficiale | MS Dance Factory" },
       {
@@ -41,7 +43,7 @@ type ProductColor = {
 type Product = {
   id: string;
   name: string;
-  category: "hoodies" | "tshirts" | "bags";
+  category: "hoodies" | "tshirts" | "tops" | "pants" | "bags";
   price: string;
   tag?: string;
   description: string;
@@ -52,41 +54,80 @@ type Product = {
 
 const products: Product[] = [
   {
-    id: "hoodie-signature",
-    name: "MSDF Signature Neon Hoodie",
+    id: "hoodie-official-msdf",
+    name: "MSDF Official Hoodie",
     category: "hoodies",
-    price: "€59.00",
+    price: "€55.00",
     tag: "BEST SELLER",
     description:
-      "Felpa oversize ultra-pesante (420 g/m²) in french terry nera. Logo frontale MS Dance Factory con grafica neon e claim iconico ricamato.",
-    image: hoodieImg,
+      "Felpa oversize con cappuccio in french terry nero premium. Logo centrale MS Dance Factory con accenti neon, tasca marsupio e claim iconico 'DANCE FIRST. THINK LATER.' serigrafato lungo la manica.",
+    image: felpaImg,
     sizes: [
-      { name: "S", price: "€59.00" },
-      { name: "M", price: "€59.00" },
-      { name: "L", price: "€59.00" },
-      { name: "XL", price: "€59.00" },
+      { name: "S", price: "€55.00" },
+      { name: "M", price: "€55.00" },
+      { name: "L", price: "€55.00" },
+      { name: "XL", price: "€55.00" },
     ],
     colors: [
       { name: "Nero", colorClass: "bg-neutral-900", borderClass: "border-neutral-600" },
     ],
   },
   {
-    id: "tee-natural-order",
-    name: "T-Shirt 'Dance First. Think Later.'",
+    id: "tee-classic-msdf",
+    name: "T-Shirt Classic Logo MSDF",
     category: "tshirts",
-    price: "€35.00",
-    tag: "NEW DROP",
+    price: "€30.00",
+    tag: "ESSENTIAL",
     description:
-      "T-shirt washed vintage black con taglio dropped-shoulder. Lettering neon frontale ad alta densità e fit boxy ideale per allenamenti e freestyle.",
-    image: tshirtImg,
+      "T-shirt girocollo in 100% cotone pettinato pesante con fit contemporaneo. Logo ufficiale MS Dance Factory sul petto con dettagli in rosso fuoco.",
+    image: magliettaImg,
     sizes: [
-      { name: "S", price: "€35.00" },
-      { name: "M", price: "€35.00" },
-      { name: "L", price: "€35.00" },
-      { name: "XL", price: "€35.00" },
+      { name: "S", price: "€30.00" },
+      { name: "M", price: "€30.00" },
+      { name: "L", price: "€30.00" },
+      { name: "XL", price: "€30.00" },
     ],
     colors: [
-      { name: "Vintage Black", colorClass: "bg-neutral-800", borderClass: "border-neutral-600" },
+      { name: "Nero", colorClass: "bg-neutral-900", borderClass: "border-neutral-600" },
+    ],
+  },
+  {
+    id: "top-crop-msdf",
+    name: "MSDF Crop Top",
+    category: "tops",
+    price: "€25.00",
+    tag: "MUST-HAVE",
+    description:
+      "Top crop sagomato con spalline sottili in tessuto tecnico elasticizzato traspirante e logo geometrico MSDF sul fondo. Perfetto per Heels, Commercial, Dancehall e workout.",
+    image: topImg,
+    sizes: [
+      { name: "XS", price: "€25.00" },
+      { name: "S", price: "€25.00" },
+      { name: "M", price: "€25.00" },
+      { name: "L", price: "€25.00" },
+    ],
+    colors: [
+      { name: "Nero", colorClass: "bg-neutral-950", borderClass: "border-neutral-700" },
+      { name: "Bianco", colorClass: "bg-neutral-100", borderClass: "border-neutral-300" },
+    ],
+  },
+  {
+    id: "pants-baggy-msdf",
+    name: "MSDF Baggy Sweatpants",
+    category: "pants",
+    price: "€45.00",
+    tag: "NEW DROP",
+    description:
+      "Pantalone tuta oversize dal fit baggy a gamba larga, con elastico arricciato in vita, coulisse regolabile e lettering MSDANCEFACTORY serigrafato a contrasto.",
+    image: pantaloneImg,
+    sizes: [
+      { name: "S", price: "€45.00" },
+      { name: "M", price: "€45.00" },
+      { name: "L", price: "€45.00" },
+      { name: "XL", price: "€45.00" },
+    ],
+    colors: [
+      { name: "Nero", colorClass: "bg-neutral-900", borderClass: "border-neutral-600" },
     ],
   },
   {
@@ -94,9 +135,9 @@ const products: Product[] = [
     name: "MSDF Urban Dancer Duffle Bag",
     category: "bags",
     price: "€20.00",
-    tag: "MUST-HAVE",
+    tag: "ACCESSORI",
     description:
-      "Borsone sportivo rinforzato con scomparto portascarpe ventilato, tasche multifunzione e tracolla ergonomica imbottita. Grafica ufficiale MSDF. Disponibile in 2 dimensioni (Piccolo a 20€ e Grande a 25€) e 2 colori (Nero e Rosso).",
+      "Borsone sportivo rinforzato con scomparto portascarpe ventilato, tasche multifunzione e tracolla ergonomica imbottita. Grafica ufficiale MSDF e claim 'Dance first. It's more than a dance here'. Disponibile in 2 dimensioni (Piccolo a 20€ e Grande a 25€) e 2 colori (Nero e Rosso).",
     image: bagImg,
     sizes: [
       { name: "Piccolo", price: "€20.00", badge: "20€" },
@@ -125,13 +166,13 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-2xl">
-      <div className="relative aspect-[4/3] overflow-hidden bg-secondary/30">
+      <div className="relative aspect-[4/5] overflow-hidden bg-secondary/30">
         <img
           src={product.image}
           alt={product.name}
           width={800}
-          height={600}
-          className="h-full w-full object-cover object-[center_55%] transition-transform duration-700 group-hover:scale-105"
+          height={1000}
+          className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
         {product.tag && (
           <span className="absolute top-4 left-4 rounded-full bg-primary px-3 py-1 text-[10px] font-bold tracking-widest text-primary-foreground uppercase shadow-lg">
@@ -309,9 +350,11 @@ function ShopPage() {
             <div className="flex flex-wrap gap-2">
               {[
                 { id: "all", label: "Tutti" },
-                { id: "hoodies", label: "Hoodies" },
-                { id: "tshirts", label: "T-Shirts" },
-                { id: "bags", label: "Bags & Accessori" },
+                { id: "hoodies", label: "Felpe" },
+                { id: "tshirts", label: "T-Shirt" },
+                { id: "tops", label: "Top" },
+                { id: "pants", label: "Pantaloni" },
+                { id: "bags", label: "Borsoni" },
               ].map((cat) => (
                 <button
                   key={cat.id}

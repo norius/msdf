@@ -531,121 +531,6 @@ function Accademia() {
         </div>
       </section>
 
-      {/* Quote & Modalità di Pagamento */}
-      <section id="quote" className="scroll-mt-24 border-t border-border py-20 sm:py-28 bg-card/20">
-        <div className="mx-auto max-w-6xl px-5">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-semibold tracking-[0.3em] text-primary uppercase">Costo & Investimento</span>
-            <h2 className="display-title mt-2 text-4xl sm:text-5xl">Piani di Partecipazione</h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Master di Formazione triennale MSDF Academy. 3 modalità trasparenti pensate per supportare il tuo percorso.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {/* Opzione 1 */}
-            <div className="neon-border relative flex flex-col rounded-2xl bg-card p-8 shadow-xl">
-              <span className="rounded-full bg-primary px-3 py-1 text-[10px] font-bold tracking-widest text-primary-foreground uppercase self-start mb-4">
-                Risparmi €500
-              </span>
-              <span className="text-xs font-bold tracking-widest text-muted-foreground uppercase">Opzione 1</span>
-              <h3 className="display-title text-2xl mt-1">Pagamento Unico</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="display-title text-5xl text-primary">€ 2.600</span>
-              </div>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Soluzione a saldo unico alla firma del contratto con massimo risparmio economico.
-              </p>
-
-              <ul className="mt-6 space-y-3 border-t border-border pt-6 text-xs text-foreground/90 flex-1">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span>Nessun costo di gestione rateale</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span>Accesso prioritario a workshop esclusivi</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span>Include kit merchandising ufficiale</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Opzione 2 */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card p-8 hover:border-primary/50 transition-colors">
-              <span className="rounded-full bg-secondary px-3 py-1 text-[10px] font-bold tracking-widest text-foreground/80 uppercase self-start mb-4">
-                Formula Flessibile
-              </span>
-              <span className="text-xs font-bold tracking-widest text-muted-foreground uppercase">Opzione 2</span>
-              <h3 className="display-title text-2xl mt-1">Pagamento Rateale</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="display-title text-4xl text-foreground">€ 500</span>
-                <span className="text-xs text-muted-foreground">+ 3 rate da €700</span>
-              </div>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Acconto alla firma del contratto, poi 3 rate cadenzate durante l'anno accademico.
-              </p>
-
-              <ul className="mt-6 space-y-3 border-t border-border pt-6 text-xs text-foreground/90 flex-1">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span><strong>€500</strong> alla firma (entro fine settembre)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span><strong>€700</strong> entro il 30 Novembre</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span><strong>€700</strong> entro il 30 Gennaio</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span><strong>€700</strong> entro il 30 Marzo</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Opzione 3 */}
-            <div className="relative flex flex-col rounded-2xl border border-border bg-card p-8 hover:border-primary/50 transition-colors">
-              <span className="rounded-full bg-secondary px-3 py-1 text-[10px] font-bold tracking-widest text-foreground/80 uppercase self-start mb-4">
-                Formula Mensile
-              </span>
-              <span className="text-xs font-bold tracking-widest text-muted-foreground uppercase">Opzione 3</span>
-              <h3 className="display-title text-2xl mt-1">Pagamento Mensile</h3>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="display-title text-4xl text-foreground">€ 350</span>
-                <span className="text-xs text-muted-foreground">/ mese</span>
-              </div>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Acconto di €300 alla firma, poi 8 quote mensili dal 15 ottobre al 15 maggio.
-              </p>
-
-              <ul className="mt-6 space-y-3 border-t border-border pt-6 text-xs text-foreground/90 flex-1">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span><strong>€300</strong> alla firma (entro fine settembre)</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span><strong>€350 / mese</strong> dal 15 Ottobre al 15 Maggio</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span>Scadenza entro il giorno 15 di ogni mese</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                  <span>Saldo finale entro il 15 Maggio</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Come Partecipare & Form Candidatura Casting */}
       <section id="casting" className="scroll-mt-24 border-t border-border py-20 sm:py-28 grain-fade">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
@@ -700,7 +585,7 @@ function Accademia() {
               <p className="text-xs font-bold tracking-[0.25em] text-primary uppercase">Direzione MSDF Academy</p>
               <div className="flex items-center gap-2 text-xs text-foreground/90">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />
-                <span>Via Giuseppe Di Vittorio 2/B – Rho Fiera (Milano)</span>
+                <span>Via Giuseppe Di Vittorio 2/B - Rho Fiera (Milano)</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-foreground/90">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
@@ -750,30 +635,9 @@ function Accademia() {
                   />
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <select
-                    name="anno"
-                    className="rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition-colors"
-                    defaultValue="Primo Anno"
-                  >
-                    <option value="Primo Anno">Primo Anno (2026/27)</option>
-                    <option value="Secondo Anno">Secondo Anno (Trasferimenti)</option>
-                  </select>
-
-                  <select
-                    name="pianoPagamento"
-                    className="rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition-colors"
-                    defaultValue="Opzione 1 — Unico (€2.600)"
-                  >
-                    <option value="Opzione 1 — Unico (€2.600)">Opzione 1 — Unico (€2.600)</option>
-                    <option value="Opzione 2 — Rateale (€500 + 3x€700)">Opzione 2 — Rateale (€500 + 3x€700)</option>
-                    <option value="Opzione 3 — Mensile (€300 + €350/m)">Opzione 3 — Mensile (€300 + €350/m)</option>
-                  </select>
-                </div>
-
                 <textarea
                   name="esperienze"
-                  rows={3}
+                  rows={4}
                   placeholder="Descrivi brevemente il tuo percorso di danza o background (stili praticati, anni di studio)"
                   className="resize-none rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition-colors"
                 />

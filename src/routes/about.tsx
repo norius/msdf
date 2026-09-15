@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Sparkles, Users, Award, Flame, Heart, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import heroImg from "@/assets/hero.jpg";
-import teacher1 from "@/assets/teacher1.jpg";
+import marcostra from "@/assets/marcostra.jpeg";
 import { staff, type StaffRole } from "@/components/dance/data";
 
 export const Route = createFileRoute("/about")({
@@ -143,7 +143,7 @@ function AboutPage() {
             <div className="relative">
               <div className="overflow-hidden rounded-2xl border border-border bg-card">
                 <img
-                  src={teacher1}
+                  src={marcostra}
                   alt="Marco Stra, Fondatore e Direttore Artistico MS Dance Factory"
                   width={800}
                   height={900}

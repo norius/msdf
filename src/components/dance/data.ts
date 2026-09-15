@@ -5,10 +5,30 @@ import caraibico from "@/assets/caraibico.jpg";
 import vogueing from "@/assets/vogueing.jpg";
 import heels from "@/assets/heels.jpg";
 import hiphop from "@/assets/hiphop.jpg";
+
+// Docenti con foto dedicata
+import marcostra from "@/assets/marcostra.jpeg";
+import teresa from "@/assets/teresa.jpeg";
+import kumo from "@/assets/kumo.jpeg";
+import ventrella from "@/assets/ventrella.jpeg";
+import cristina from "@/assets/cristina.jpeg";
+import teddy from "@/assets/teddy.jpeg";
+import carolina from "@/assets/carolina.jpeg";
+import emy from "@/assets/emy.jpeg";
+import emyCrew from "@/assets/emyCrew.jpeg";
+import francesca from "@/assets/francesca.jpeg";
+import ronald from "@/assets/ronald.jpeg";
+import sofiaderivi from "@/assets/sofiaderivi.jpeg";
+import nady from "@/assets/nady.jpeg";
+import missglo from "@/assets/missglo.jpeg";
+import eliana from "@/assets/eliana.jpeg";
+import silvia from "@/assets/silvia.jpeg";
+import spedix from "@/assets/spedix.jpeg";
+import scotti from "@/assets/scotti.jpeg";
+import nicolo from "@/assets/nicolo.jpeg";
+
+// Fallback per docenti in attesa di foto
 import teacher1 from "@/assets/teacher1.jpg";
-import teacher2 from "@/assets/teacher2.jpg";
-import teacher3 from "@/assets/teacher3.jpg";
-import teacher4 from "@/assets/teacher4.jpg";
 
 export type Lesson = {
   time: string;
@@ -56,7 +76,7 @@ export const schedule: Record<Day, Lesson[]> = {
     { time: "19:30 - 20:30", course: "Heels (14+)", room: "Sala 1", teacher: "Emy", level: "Open" },
     { time: "19:30 - 20:30", course: "Modern (14+)", room: "Sala 2", teacher: "Carolina", level: "Open" },
     { time: "20:30 - 21:30", course: "Latin Dance (18+)", room: "Sala 1", teacher: "Marco Stra", level: "Choreography" },
-    { time: "20:30 - 21:30", course: "Salsa & Bachata (18+)", room: "Sala 2", teacher: "Emy & Simone", level: "Open" },
+    { time: "20:30 - 21:30", course: "Salsa & Bachata (18+)", room: "Sala 2", teacher: "Emy Crew", level: "Open" },
     { time: "21:30 - 22:30", course: "Commercial Avanzato (17+)", room: "Sala 1", teacher: "Marco Stra", level: "Wild Mama's" },
     { time: "21:30 - 22:30", course: "Ladystyle (14+)", room: "Sala 2", teacher: "Emy", level: "Open" },
   ],
@@ -84,7 +104,7 @@ export const disciplines = [
   {
     name: "Caraibico",
     image: caraibico,
-    description: "Salsa, Bachata e portamento con Emy & Simone. Include il corso Latin Baby con Eliana.",
+    description: "Salsa, Bachata e portamento con Emy e la Emy Crew. Include il corso Latin Baby con Eliana.",
     levels: ["Open", "Kids"],
   },
   {
@@ -120,87 +140,101 @@ export type StaffMember = {
 export const staff: StaffMember[] = [
   {
     name: "Marco Stra",
-    image: teacher1,
+    image: marcostra,
     styles: "Commercial · Hip-Hop",
     bio: "Fondatore e direttore artistico di MS Dance Factory e MSDF Academy. Coreografo e performer di riferimento nel settore.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Teresa Ferrari",
-    image: teacher3,
+    image: teresa,
     styles: "Heels Technique",
     bio: "Docente d'eccellenza per lo studio della tecnica pura, dell'allineamento posturale e dell'impostazione sui tacchi per performer.",
     tags: ["Accademia"],
   },
   {
     name: "Kumo",
-    image: teacher4,
+    image: kumo,
     styles: "Contaminazione",
     bio: "Coreografo e ballerino urban di successo. Focalizzato su musicalità ad alta definizione, groove.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Sofia Ventrella",
-    image: teacher3,
+    image: ventrella,
     styles: "Coreografico · Heels Stiletto",
     bio: "Insegnante e ballerina heels e classica. Unisce la disciplina del ballet all'attitudine e alla sensualità sui tacchi a spillo.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Cristina Brambilla",
-    image: teacher2,
+    image: cristina,
     styles: "Ballet · Baby Ballet",
     bio: "Docente di tecnica accademica pura e propedeutica al perfezionamento tecnico per ballerini professionisti.",
     tags: ["Scuola", "Accademia"],
   },
   {
-    name: "Francesco Vanella",
-    image: teacher1,
-    styles: "Hip Hop",
-    bio: "Ballerino professionista e formatore Hip Hop. Cura foundation, isolazioni, groove profondo e attitudine da palcoscenico.",
+    name: "Nicolò",
+    image: nicolo,
+    styles: "Hip Hop · Foundation",
+    bio: "Ballerino professionista e docente di Hip Hop Foundation. Cura foundation, isolazioni, groove profondo e attitudine da palcoscenico.",
     tags: ["Accademia"],
   },
   {
     name: "Teddy Fonzarelli",
-    image: teacher2,
+    image: teddy,
     styles: "House",
     bio: "Pioniere della House Dance. Insegna footwork, jacking, lofting e la complessa ritmica della musica elettronica e clubbing.",
     tags: ["Accademia"],
   },
   {
     name: "Carolina Bianco",
-    image: teacher1,
+    image: carolina,
     styles: "Modern · Contemporary",
     bio: "Insegnante di Modern Contemporary. Lavora sulla fluidità cinetica, sul floorwork e sulla profonda consapevolezza espressiva.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Emy Codebò",
-    image: teacher4,
+    image: emy,
     styles: "Caraibico · Heels · Ladystyle",
     bio: "Docente certificata di Heels e danze caraibiche. Specialista in portamento scenico, coordinazione ritmica ed eleganza performativa.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Francesca",
-    image: teacher2,
+    image: francesca,
     styles: "Preparazione atletica & estetica · Pilates",
     bio: "Preparatrice atletica specifica per danzatori e ballerina dancehall. Sviluppa potenza muscolare, flessibilità e tenuta scenica.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Ronald Guzman",
-    image: teacher3,
+    image: ronald,
     styles: "Reggaeton",
     bio: "Performer ed esperto di sonorità urbane latine e caraibiche. Trasmette energia pura, dinamica di movimento e ritmo travolgente.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Sofia Derivi",
-    image: teacher3,
+    image: sofiaderivi,
     styles: "Afroyoung",
     bio: "Ballerina professionista ed ex concorrente televisiva. Specializzata in danze africane, unisce tecnica moderna a groove tradizionale.",
     tags: ["Scuola"],
+  },
+  {
+    name: "Spedix",
+    image: spedix,
+    styles: "Vogueing · Ballroom Culture",
+    bio: "Mother della House of Dipstars. Riferimento per la scena Ballroom e Vogueing, guida i ballerini in performance, posato ed attitude scenica.",
+    tags: ["Scuola", "Accademia"],
+  },
+  {
+    name: "Ale La Scotti",
+    image: scotti,
+    styles: "Dancehall",
+    bio: "Ballerina ed insegnante di Dancehall. Porta in sala l'energia autentica giamaicana, steps iconici, flow e la cultura originale della street dance caraibica.",
+    tags: ["Scuola", "Accademia"],
   },
   {
     name: "Edoardo Bottigelli",
@@ -211,35 +245,35 @@ export const staff: StaffMember[] = [
   },
   {
     name: "Nady",
-    image: teacher1,
+    image: nady,
     styles: "Afro",
     bio: "Esperta di danze tradizionali africane ed afrobeats. Un viaggio intenso e liberatorio nel ritmo e nella cultura afro.",
     tags: ["Scuola", "Accademia"],
   },
   {
     name: "Gloria",
-    image: teacher3,
+    image: missglo,
     styles: "Ballet Young",
     bio: "Insegnante diplomata in danza classica. Cura la formazione propedeutica e accademica dei più giovani con rigore e dolcezza.",
     tags: ["Scuola"],
   },
   {
     name: "Eliana",
-    image: teacher4,
+    image: eliana,
     styles: "Latin Baby",
     bio: "Specializzata nelle danze caraibiche per bambini. Introduce i piccoli allievi ai ritmi latini attraverso il gioco e la coordinazione.",
     tags: ["Scuola"],
   },
   {
-    name: "Simone",
-    image: teacher2,
-    styles: "Caraibici · Salsa & Bachata",
-    bio: "Insegnante di balli caraibici di coppia. Insegna dinamiche di guida, intesa, portamento maschile e sincronia di sala.",
-    tags: ["Scuola", "Accademia"],
+    name: "Emy Crew",
+    image: emyCrew,
+    styles: "Caraibico · Show Dance",
+    bio: "Corpo di ballo e gruppo coreografico diretto da Emy Codebò. Eleganza, ritmi latini, sincronia e presenza scenica sul palcoscenico.",
+    tags: ["Scuola"],
   },
   {
     name: "Silvia",
-    image: teacher4,
+    image: silvia,
     styles: "Country",
     bio: "Insegnante qualificata di danza country western. Conduce le lezioni di Country Line Dance con ritmo, energia e socializzazione.",
     tags: ["Scuola"],
@@ -281,11 +315,11 @@ export const accademiaSchedule: Record<AccademiaYear, Partial<Record<AccademiaDa
     ],
     "Giovedì": [
       { time: "15:30 - 16:30", subject: "VOGUEING", teacher: "Spedix" },
-      { time: "16:30 - 17:30", subject: "HIP HOP", teacher: "Nicola" },
+      { time: "16:30 - 17:30", subject: "HIP HOP", teacher: "Nicolò" },
       { time: "17:30 - 18:30", subject: "HEELS 👠", teacher: "Sofia Ventrella" },
       { time: "18:30 - 19:30", subject: "pausa", teacher: "" },
       { time: "19:30 - 20:30", subject: "MODERN", teacher: "Carolina", optional: true },
-      { time: "20:30 - 21:30", subject: "LATIN 👥", teacher: "Emy & Simone", optional: true },
+      { time: "20:30 - 21:30", subject: "LATIN 👥", teacher: "Emy", optional: true },
       { time: "21:30 - 22:30", subject: "LADYSTYLE 👠", teacher: "Emy", optional: true },
     ],
   },
@@ -298,7 +332,7 @@ export const accademiaSchedule: Record<AccademiaYear, Partial<Record<AccademiaDa
       { time: "21:00 - 22:00", subject: "HIP HOP CONTAMINATO", teacher: "Kumo", optional: true },
     ],
     "Martedì": [
-      { time: "16:15 - 17:15", subject: "HIP HOP FOUNDATION", teacher: "Nicola" },
+      { time: "16:15 - 17:15", subject: "HIP HOP FOUNDATION", teacher: "Nicolò" },
       { time: "17:30 - 18:30", subject: "DANCEHALL", teacher: "Alice La Scotti" },
       { time: "18:30 - 19:30", subject: "GUEST CLASS", teacher: "" },
       { time: "19:30 - 20:30", subject: "COMMERCIAL", teacher: "Marco Stra" },
@@ -312,7 +346,7 @@ export const accademiaSchedule: Record<AccademiaYear, Partial<Record<AccademiaDa
     ],
     "Giovedì": [
       { time: "19:30 - 20:30", subject: "MODERN", teacher: "Carolina", optional: true },
-      { time: "20:30 - 21:30", subject: "LATIN 👥", teacher: "Emy & Simone", optional: true },
+      { time: "20:30 - 21:30", subject: "LATIN 👥", teacher: "Emy", optional: true },
       { time: "21:30 - 22:30", subject: "LADYSTYLE 👠", teacher: "Emy", optional: true },
     ],
   },
