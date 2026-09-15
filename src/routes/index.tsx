@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, TrainFront } from "lucide-react";
+import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, TrainFront, Navigation, ExternalLink, Footprints } from "lucide-react";
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
 import { days, schedule, disciplines, type Day } from "@/components/dance/data";
@@ -219,6 +219,87 @@ function Index() {
         </div>
       </section>
 
+      {/* Mappa Interattiva & Percorso a Piedi */}
+      <div className="mx-auto mt-12 sm:mt-16 max-w-6xl px-5">
+        <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
+          {/* Header del Percorso */}
+          <div className="flex flex-col gap-5 border-b border-border bg-card/90 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-bold tracking-widest text-primary uppercase">
+                <TrainFront className="h-3.5 w-3.5" />
+                Percorso Rapido dalla Metro
+              </div>
+              <h3 className="display-title text-2xl sm:text-3xl lg:text-4xl mt-3">
+                A pochi minuti a piedi dalla M1 Rho Fiera
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                Raggiungerci è facilissimo: prendi la metropolitana <span className="font-semibold text-primary">M1 Rossa</span> fino al capolinea <span className="font-semibold text-foreground">Rho Fiera</span>, prendi l'uscita pedonale più vicina <span className="font-semibold text-foreground">MIND Accesso OVEST (Ex Cargo 6)</span> e segui il percorso fino alla scuola.
+              </p>
+            </div>
+
+            {/* Pulsante Navigatore */}
+            <div className="shrink-0">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&origin=45.522008737905146,9.08798205386315&destination=Via+Giuseppe+di+Vittorio+2b+Rho&travelmode=walking"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neon-glow inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-xs font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-105 active:scale-95 shadow-lg"
+              >
+                <Navigation className="h-4 w-4" />
+                Avvia navigatore a piedi
+                <ExternalLink className="h-3.5 w-3.5 opacity-80" />
+              </a>
+            </div>
+          </div>
+
+          {/* Stepper informativo */}
+          <div className="grid grid-cols-1 divide-y divide-border border-b border-border bg-secondary/20 text-xs sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
+            <div className="flex items-center gap-3.5 p-4 sm:p-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
+                <TrainFront className="h-5 w-5" />
+              </div>
+              <div>
+                <span className="font-bold uppercase tracking-wider text-foreground">1. Uscita Metro più vicina</span>
+                <p className="mt-0.5 text-muted-foreground">MIND Accesso OVEST · Ex Cargo 6 (M1 Rho Fiera)</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 p-4 sm:p-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
+                <Footprints className="h-5 w-5" />
+              </div>
+              <div>
+                <span className="font-bold uppercase tracking-wider text-foreground">2. Tragitto Pedonale</span>
+                <p className="mt-0.5 text-muted-foreground">Tragitto in piano · pochi minuti a piedi</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 p-4 sm:p-5">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/20 text-primary">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <div>
+                <span className="font-bold uppercase tracking-wider text-foreground">3. Arrivo in Sede</span>
+                <p className="mt-0.5 text-muted-foreground">Via Giuseppe di Vittorio, 2/b, Rho (MI)</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Iframe Google Maps con percorso evidenziato */}
+          <div className="relative min-h-[420px] w-full bg-secondary/30">
+            <iframe
+              title="Percorso a piedi da MIND Accesso OVEST a MS Dance Factory"
+              src="https://maps.google.com/maps?saddr=45.522008737905146,9.08798205386315&daddr=Via+Giuseppe+di+Vittorio+2b+Rho&dirflg=w&output=embed"
+              width="100%"
+              height="420"
+              className="w-full border-0 grayscale contrast-125 opacity-90 transition-all duration-500 hover:grayscale-0 hover:opacity-100"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* Contatti */}
       <section id="contatti" className="scroll-mt-24 border-t border-border py-20 sm:py-28">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
@@ -275,7 +356,7 @@ function Index() {
                 <div>
                   <span className="font-semibold text-foreground">Come raggiungerci?</span>
                   <p className="mt-0.5 text-muted-foreground leading-relaxed">
-                    Metropolitana M1 Rossa — Fermata Rho Fiera — Uscita in Via Risorgimento + 10min a piedi
+                    Metropolitana M1 Rossa — Fermata Rho Fiera — Uscita MIND Accesso OVEST (Ex Cargo 6) + pochi minuti a piedi
                   </p>
                 </div>
               </li>
@@ -360,6 +441,8 @@ function Index() {
             </div>
           </form>
         </div>
+
+
       </section>
 
     </>
