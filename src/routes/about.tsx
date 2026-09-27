@@ -5,8 +5,14 @@ import useEmblaCarousel from "embla-carousel-react";
 import heroImg from "@/assets/hero.jpg";
 import marcostra from "@/assets/marcostra.jpeg";
 import { staff, type StaffRole } from "@/components/dance/data";
+import { getYouTubeVideos } from "@/lib/youtube";
+import { YouTubeSection } from "@/components/dance/YouTubeSection";
 
 export const Route = createFileRoute("/about")({
+  loader: async () => {
+    const videos = await getYouTubeVideos();
+    return { videos };
+  },
   head: () => ({
     meta: [
       { title: "About Us | MS Dance Factory — Scuola di Danza Urban a Milano" },
@@ -28,6 +34,7 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const { videos } = Route.useLoaderData();
   const [selectedTag, setSelectedTag] = useState<"Tutti" | StaffRole>("Tutti");
 
   const filteredStaff =
@@ -209,6 +216,9 @@ function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* YouTube Video Section */}
+      <YouTubeSection videos={videos} />
 
       {/* Staff & Maestri */}
       <section id="staff" className="scroll-mt-24 border-t border-border py-20 sm:py-28 grain-fade">

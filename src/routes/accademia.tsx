@@ -26,6 +26,7 @@ import {
   type AccademiaYear,
   type AccademiaDay,
 } from "@/components/dance/data";
+import { submitAuditionForm } from "@/lib/actions";
 
 export const Route = createFileRoute("/accademia")({
   head: () => ({
@@ -83,6 +84,8 @@ function Accademia() {
   const [activeYear, setActiveYear] = useState<AccademiaYear>("Primo Anno");
   const [activeDay, setActiveDay] = useState<AccademiaDay>("Martedì");
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMinor, setIsMinor] = useState(false);
 
   const availableDays: AccademiaDay[] =
     activeYear === "Primo Anno"
@@ -596,14 +599,58 @@ function Accademia() {
 
           {/* Form Candidatura */}
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(true);
-              toast.success("Candidatura inviata con successo! Riceverai i dettagli del casting via email entro 24 ore.");
-              (e.target as HTMLFormElement).reset();
+              setIsSubmitting(true);
+              const form = e.currentTarget;
+              const formData = new FormData(form);
+              const data = {
+                nome: (formData.get("nome") as string)?.trim() || "",
+                email: (formData.get("email") as string)?.trim() || "",
+                telefono: (formData.get("telefono") as string)?.trim() || "",
+                esperienze: (formData.get("esperienze") as string)?.trim() || undefined,
+                isMinor,
+                genitoreContatto: isMinor
+                  ? (formData.get("genitore_contatto") as string)?.trim() || undefined
+                  : undefined,
+                bot_field: (formData.get("bot_field") as string)?.trim() || undefined,
+                privacy: formData.get("privacy") === "on",
+              };
+
+              try {
+                const res = await submitAuditionForm({ data });
+                if (res.success) {
+                  setSent(true);
+                  toast.success(
+                    "Candidatura inviata con successo! Riceverai i dettagli del casting via email entro 24 ore."
+                  );
+                  form.reset();
+                  setIsMinor(false);
+                } else {
+                  toast.error(
+                    res.error || "Errore durante l'invio della candidatura. Riprova più tardi."
+                  );
+                }
+              } catch (err: any) {
+                toast.error(
+                  err?.message || "Si è verificato un errore di connessione. Riprova più tardi."
+                );
+              } finally {
+                setIsSubmitting(false);
+              }
             }}
             className="rounded-2xl border border-border bg-card p-6 sm:p-8 flex flex-col justify-between shadow-2xl"
           >
+            {/* Honeypot invisibile per bot */}
+            <input
+              type="text"
+              name="bot_field"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden pointer-events-none absolute -left-[9999px] opacity-0"
+            />
+
             <div>
               <span className="text-xs font-bold tracking-widest text-primary uppercase">Prenotazione Audizione</span>
               <h3 className="display-title text-3xl mt-1">Candidati per il Casting</h3>
@@ -635,21 +682,79 @@ function Accademia() {
                   />
                 </div>
 
+                {/* Tutela Minori: Selezione se candidato minorenne */}
+                <div className="rounded-xl border border-border/80 bg-background/50 p-4 space-y-2.5">
+                  <label className="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-foreground select-none">
+                    <input
+                      type="checkbox"
+                      checked={isMinor}
+                      onChange={(e) => setIsMinor(e.target.checked)}
+                      className="h-4 w-4 rounded border-border text-primary focus:ring-primary cursor-pointer accent-primary shrink-0"
+                    />
+                    <span>Il candidato è <strong>minorenne</strong> (età inferiore a 18 anni)</span>
+                  </label>
+
+                  {isMinor && (
+                    <div className="pt-2 border-t border-border/60">
+                      <label className="block text-[11px] font-semibold text-primary uppercase tracking-wider mb-1">
+                        Dati Genitore o Tutore Legale
+                      </label>
+                      <input
+                        required={isMinor}
+                        name="genitore_contatto"
+                        placeholder="Nome, cognome e recapito del genitore / tutore"
+                        className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-xs outline-none focus:border-primary transition-colors"
+                      />
+                      <p className="mt-1 text-[10px] text-muted-foreground">
+                        Richiesto ai sensi del GDPR per la partecipazione alle audizioni di allievi minorenni.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
                 <textarea
                   name="esperienze"
                   rows={4}
                   placeholder="Descrivi brevemente il tuo percorso di danza o background (stili praticati, anni di studio)"
                   className="resize-none rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition-colors"
                 />
+
+                {/* Privacy Consent (GDPR Art. 13) */}
+                <div className="flex items-start gap-2.5 pt-1">
+                  <input
+                    type="checkbox"
+                    id="audition-privacy"
+                    required
+                    name="privacy"
+                    className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-primary cursor-pointer accent-primary shrink-0"
+                  />
+                  <label htmlFor="audition-privacy" className="text-xs text-muted-foreground leading-snug cursor-pointer select-none">
+                    Dichiaro di aver letto l'
+                    <Link to="/privacy" className="text-primary underline hover:text-primary/80 transition-colors mx-1 font-medium">
+                      Informativa Privacy
+                    </Link>
+                    e acconsento al trattamento dei dati personali per la gestione della candidatura all'Academy.
+                  </label>
+                </div>
               </div>
             </div>
 
             <div className="mt-8">
               <button
                 type="submit"
-                className="neon-glow w-full rounded-full bg-primary py-4 text-xs font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-[1.01] cursor-pointer"
+                disabled={isSubmitting}
+                className="neon-glow w-full rounded-full bg-primary py-4 text-xs font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2"
               >
-                {sent ? "Candidatura Ricevuta!" : "Invia candidatura casting"}
+                {isSubmitting ? (
+                  <>
+                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                    <span>Invio candidatura in corso...</span>
+                  </>
+                ) : sent ? (
+                  "Candidatura Ricevuta!"
+                ) : (
+                  "Invia candidatura casting"
+                )}
               </button>
               {sent && (
                 <p className="mt-3 text-center text-xs text-primary font-semibold">

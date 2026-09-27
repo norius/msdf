@@ -152,10 +152,10 @@ const products: Product[] = [
 
 function ProductCard({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState<ProductSize | null>(
-    product.sizes && product.sizes.length > 0 ? product.sizes[0] : null
+    product.sizes?.[0] ?? null
   );
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(
-    product.colors && product.colors.length > 0 ? product.colors[0] : null
+    product.colors?.[0] ?? null
   );
 
   const currentPrice = selectedSize ? selectedSize.price : product.price;
@@ -216,11 +216,10 @@ function ProductCard({ product }: { product: Product }) {
                       key={c.name}
                       type="button"
                       onClick={() => setSelectedColor(c)}
-                      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-                        isSelected
+                      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${isSelected
                           ? "bg-primary/15 border-2 border-primary text-foreground font-semibold shadow-sm"
                           : "bg-secondary/40 border border-border text-muted-foreground hover:text-foreground hover:border-border/80"
-                      }`}
+                        }`}
                     >
                       <span
                         className={`h-3 w-3 rounded-full border ${c.colorClass} ${c.borderClass || "border-border"}`}
@@ -250,11 +249,10 @@ function ProductCard({ product }: { product: Product }) {
                       key={s.name}
                       type="button"
                       onClick={() => setSelectedSize(s)}
-                      className={`rounded-lg px-3.5 py-1.5 text-xs font-bold tracking-wide transition-all ${
-                        isSelected
+                      className={`rounded-lg px-3.5 py-1.5 text-xs font-bold tracking-wide transition-all ${isSelected
                           ? "bg-primary text-primary-foreground shadow-md shadow-primary/20 scale-102"
                           : "bg-secondary/50 border border-border text-muted-foreground hover:text-foreground hover:border-primary/40"
-                      }`}
+                        }`}
                     >
                       {s.name} {s.badge && <span className="ml-1 opacity-80">({s.badge})</span>}
                     </button>

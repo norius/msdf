@@ -4,6 +4,7 @@ import { Calendar, Clock, MapPin, Phone, Mail, Instagram, ArrowRight, TrainFront
 import { toast } from "sonner";
 import heroImg from "@/assets/hero.jpg";
 import { days, schedule, disciplines, type Day } from "@/components/dance/data";
+import { submitContactForm } from "@/lib/actions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,6 +35,7 @@ function scrollToId(id: string) {
 function Index() {
   const [activeDay, setActiveDay] = useState<Day>("Lunedì");
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <>
@@ -370,14 +372,48 @@ function Index() {
           </div>
 
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(true);
-              toast.success("Richiesta inviata! Ti ricontattiamo entro 24 ore.");
-              (e.target as HTMLFormElement).reset();
+              setIsSubmitting(true);
+              const form = e.currentTarget;
+              const formData = new FormData(form);
+              const data = {
+                nome: (formData.get("nome") as string)?.trim() || "",
+                email: (formData.get("email") as string)?.trim() || "",
+                telefono: (formData.get("telefono") as string)?.trim() || undefined,
+                corso: (formData.get("corso") as string)?.trim() || undefined,
+                messaggio: (formData.get("messaggio") as string)?.trim() || "",
+                bot_field: (formData.get("bot_field") as string)?.trim() || undefined,
+                privacy: formData.get("privacy") === "on",
+              };
+
+              try {
+                const res = await submitContactForm({ data });
+                if (res.success) {
+                  setSent(true);
+                  toast.success("Richiesta inviata! Ti ricontattiamo entro 24 ore.");
+                  form.reset();
+                } else {
+                  toast.error(res.error || "Errore durante l'invio della richiesta. Riprova più tardi.");
+                }
+              } catch (err: any) {
+                toast.error(err?.message || "Si è verificato un errore di connessione. Riprova più tardi.");
+              } finally {
+                setIsSubmitting(false);
+              }
             }}
             className="rounded-xl border border-border bg-card p-6 sm:p-8"
           >
+            {/* Honeypot invisibile per bot */}
+            <input
+              type="text"
+              name="bot_field"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden pointer-events-none absolute -left-[9999px] opacity-0"
+            />
+
             <h3 className="display-title text-2xl">Richiedi informazioni</h3>
             <div className="mt-6 grid gap-4">
               <input
@@ -422,16 +458,44 @@ function Index() {
                 <option value="prova">Prima settimana di prova</option>
               </select>
               <textarea
+                required
                 name="messaggio"
                 rows={4}
                 placeholder="Il tuo messaggio"
                 className="resize-none rounded-md border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary"
               />
+
+              {/* Privacy Consent (GDPR Art. 13) */}
+              <div className="flex items-start gap-2.5 pt-1">
+                <input
+                  type="checkbox"
+                  id="contact-privacy"
+                  required
+                  name="privacy"
+                  className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-primary cursor-pointer accent-primary shrink-0"
+                />
+                <label htmlFor="contact-privacy" className="text-xs text-muted-foreground leading-snug cursor-pointer select-none">
+                  Ho letto e compreso l'
+                  <Link to="/privacy" className="text-primary underline hover:text-primary/80 transition-colors mx-1 font-medium">
+                    Informativa sulla Privacy
+                  </Link>
+                  e acconsento al trattamento dei miei dati per ricevere risposta alla richiesta.
+                </label>
+              </div>
+
               <button
                 type="submit"
-                className="neon-glow rounded-full bg-primary px-6 py-4 text-sm font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-[1.02]"
+                disabled={isSubmitting}
+                className="neon-glow rounded-full bg-primary px-6 py-4 text-sm font-bold tracking-widest text-primary-foreground uppercase transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center gap-2 mt-2"
               >
-                Invia richiesta
+                {isSubmitting ? (
+                  <>
+                    <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                    <span>Invio in corso...</span>
+                  </>
+                ) : (
+                  "Invia richiesta"
+                )}
               </button>
               {sent && (
                 <p className="text-center text-xs text-muted-foreground">
