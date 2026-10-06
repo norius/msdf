@@ -4,14 +4,18 @@ import { ShieldCheck, ArrowLeft, Mail, MapPin, Lock, FileText, CheckCircle2 } fr
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Informativa sulla Privacy & Cookie Policy | MS Dance Factory" },
+      { title: "Informativa sulla Privacy & Cookie Policy | MS Dance Factory Rho" },
       {
         name: "description",
         content:
           "Informativa sul trattamento dei dati personali e utilizzo dei cookie per il sito MS Dance Factory ai sensi del Regolamento UE 2016/679 (GDPR) e della legge italiana.",
       },
-      { property: "og:title", content: "Privacy & Cookie Policy | MS Dance Factory" },
+      { property: "og:title", content: "Privacy & Cookie Policy | MS Dance Factory Rho" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.msdancefactory.it/privacy" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.msdancefactory.it/privacy" },
     ],
   }),
   component: PrivacyPage,

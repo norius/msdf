@@ -11,18 +11,33 @@ import heroImg from "@/assets/hero.jpg";
 export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
-      { title: "Shop Ufficiale | MS Dance Factory — Streetwear & Merch" },
+      {
+        title: "Official Shop | MS Dance Factory Merch & Streetwear — Marco Stra",
+      },
       {
         name: "description",
         content:
-          "Lo shop ufficiale di MS Dance Factory. Felpe oversize, t-shirt, top crop, pantaloni baggy e borsoni firmati Marco Stra. Disponibili per il ritiro a Rho (Milano).",
+          "Abbigliamento streetwear e dance gear ufficiale di MS Dance Factory e Marco Stra. Felpe oversize, t-shirt e top crop con ritiro presso la sede a Rho (Milano).",
       },
-      { property: "og:title", content: "Shop Ufficiale | MS Dance Factory" },
+      {
+        name: "keywords",
+        content:
+          "shop ms dance factory, felpe marco stra, streetwear danza milano, merch msdf, abbigliamento hip hop rho",
+      },
+      {
+        property: "og:title",
+        content: "Official Shop | MS Dance Factory Merch & Streetwear — Marco Stra",
+      },
       {
         property: "og:description",
-        content: "Streetwear e dance gear ufficiale per allievi e supporter della MS Dance Factory.",
+        content: "Streetwear e dance gear ufficiale per allievi e supporter della MS Dance Factory a Rho.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.msdancefactory.it/shop" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.msdancefactory.it/shop" },
     ],
   }),
   component: ShopPage,

@@ -73,18 +73,150 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const schemaJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["DanceSchool", "SportsActivityLocation", "EducationalOrganization"],
+      "@id": "https://www.msdancefactory.it/#organization",
+      "name": "MS Dance Factory",
+      "alternateName": [
+        "MSDF",
+        "MS Dance Factory Rho",
+        "Scuola di Danza MS Dance Factory",
+        "MS Dance Factory Marco Stra",
+        "Scuola Danza Rho"
+      ],
+      "url": "https://www.msdancefactory.it",
+      "logo": "https://www.msdancefactory.it/favicon.ico",
+      "description":
+        "Scuola di danza urban e accademia professionale a Rho (Milano) diretta da Marco Stra. Corsi per ogni livello di Hip Hop, Heels, Dancehall, Afro, Vogueing, Danza Moderna e Academy triennale.",
+      "telephone": "+39 347 000 0000",
+      "email": "msdancefactory2021@gmail.com",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Giuseppe Di Vittorio 2/B",
+        "addressLocality": "Rho",
+        "addressRegion": "MI",
+        "postalCode": "20017",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.5298,
+        "longitude": 9.0401
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Rho" },
+        { "@type": "City", "name": "Milano" },
+        { "@type": "City", "name": "Pero" },
+        { "@type": "City", "name": "Lainate" },
+        { "@type": "City", "name": "Arese" },
+        { "@type": "City", "name": "Bollate" },
+        { "@type": "City", "name": "Cornaredo" },
+        { "@type": "City", "name": "Settimo Milanese" }
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://www.msdancefactory.it/#marcostra",
+        "name": "Marco Stra",
+        "jobTitle": "Direttore Artistico & Coreografo",
+        "sameAs": [
+          "https://www.youtube.com/@marcostra7236",
+          "https://www.instagram.com/marcostra_official/"
+        ]
+      },
+      "sameAs": [
+        "https://www.youtube.com/@marcostra7236",
+        "https://www.instagram.com/msdancefactory_/"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "16:30",
+          "closes": "22:30"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.msdancefactory.it/#marcostra",
+      "name": "Marco Stra",
+      "jobTitle": "Direttore Artistico & Coreografo",
+      "description":
+        "Ballerino professionista, performer televisivo e coreografo di spicco nella scena urban italiana. Fondatore e direttore artistico di MS Dance Factory e MSDF Academy a Rho (Milano).",
+      "worksFor": { "@id": "https://www.msdancefactory.it/#organization" },
+      "sameAs": [
+        "https://www.youtube.com/@marcostra7236",
+        "https://www.instagram.com/marcostra_official/"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.msdancefactory.it/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Dove si trova la scuola di danza MS Dance Factory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text":
+              "MS Dance Factory si trova a Rho (Milano) in Via Giuseppe Di Vittorio 2/B, comodamente raggiungibile da Rho Fiera, dalla stazione FS di Rho e dalla tangenziale ovest di Milano."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Chi è Marco Stra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text":
+              "Marco Stra è ballerino, performer e coreografo. È il fondatore e direttore artistico di MS Dance Factory e di MSDF Academy a Rho (Milano)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali corsi di danza si tengono a Rho presso MS Dance Factory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text":
+              "I corsi includono Hip Hop (tutti i livelli), Reggaeton Heels, Stiletto Heels, Dancehall, Afro Dance, Vogueing, Waacking, Commerciale, Danza Moderna, Baby Latin e l'Accademia Triennale di formazione professionale MSDF Academy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Come fare una lezione di prova gratuita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text":
+              "MS Dance Factory offre una settimana di prova gratuita per tutti i nuovi iscritti. È possibile prenotarla compilando il modulo contatti sul sito web o via email."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MS Dance Factory | Scuola di Danza Urban" },
+      { title: "MS Dance Factory | Scuola di Danza a Rho (Milano) — Marco Stra" },
       {
         name: "description",
-        content: "Scuola di danza urban MS Dance Factory: corsi, orari e insegnanti.",
+        content:
+          "Scuola di danza urban MS Dance Factory a Rho (Milano), diretta da Marco Stra. Corsi di Hip Hop, Heels, Dancehall, Afro, Vogueing e Academy professionale.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "MS Dance Factory" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "geo.region", content: "IT-MI" },
+      { name: "geo.placename", content: "Rho, Milano" },
+      { name: "geo.position", content: "45.5298;9.0401" },
+      { name: "ICBM", content: "45.5298, 9.0401" },
+      { name: "author", content: "Marco Stra" },
     ],
     links: [
       {
@@ -92,6 +224,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "canonical", href: "https://www.msdancefactory.it" },
     ],
   }),
 
@@ -106,6 +239,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="it">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaJsonLd),
+          }}
+        />
       </head>
       <body>
         {children}

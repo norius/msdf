@@ -31,20 +31,34 @@ import { submitAuditionForm } from "@/lib/actions";
 export const Route = createFileRoute("/accademia")({
   head: () => ({
     meta: [
-      { title: "MSDF Academy | Professional Dance Program 2026/2027 — Rho Fiera" },
+      {
+        title: "MSDF Academy | Casting & Accademia Professionale Danza Rho — Marco Stra",
+      },
       {
         name: "description",
         content:
-          "MSDF Academy: percorso triennale di alta formazione professionale per ballerini e performer. Diploma riconosciuto a livello europeo, docenti internazionali, produzioni live e casting a Rho Fiera.",
+          "Accademia triennale di alta formazione professionale per ballerini e performer a Rho Fiera (Milano), diretta da Marco Stra. Diploma europeo, docenti internazionali e audizioni.",
       },
-      { property: "og:title", content: "MSDF Academy | Professional Dance Program 2026/2027" },
+      {
+        name: "keywords",
+        content:
+          "accademia danza rho, casting danza milano, marco stra academy, audizioni danza rho, msdf academy, diploma danza europeo, scuola danza professionale milano",
+      },
+      {
+        property: "og:title",
+        content: "MSDF Academy | Casting & Accademia Professionale Danza Rho — Marco Stra",
+      },
       {
         property: "og:description",
         content:
-          "We don't create dancers. We create performers. Percorso triennale diretto da Marco Stra.",
+          "We don't create dancers. We create performers. Percorso triennale di alta formazione a Rho Fiera diretto da Marco Stra.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.msdancefactory.it/accademia" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.msdancefactory.it/accademia" },
     ],
   }),
   component: Accademia,
@@ -121,6 +135,7 @@ function Accademia() {
           </div>
 
           <h1 className="display-title neon-text mt-4 max-w-4xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.92] tracking-tight">
+            <span className="sr-only">MSDF Academy — Percorso Professionale Triennale di Danza a Rho (Milano) diretto da Marco Stra. </span>
             WE DON'T CREATE DANCERS.<br />
             WE CREATE PERFORMERS.
           </h1>

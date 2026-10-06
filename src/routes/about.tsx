@@ -15,19 +15,34 @@ export const Route = createFileRoute("/about")({
   },
   head: () => ({
     meta: [
-      { title: "About Us | MS Dance Factory — Scuola di Danza Urban a Milano" },
+      {
+        title: "Chi Siamo & Marco Stra | MS Dance Factory — Scuola Danza Rho",
+      },
       {
         name: "description",
         content:
-          "Scopri la storia, i valori e il corpo docenti di MS Dance Factory a Rho (Milano). Fondata da Marco Stra: passione, tecnica urban, inclusività e percorsi accademici.",
+          "Scopri la storia di MS Dance Factory a Rho (Milano) e del direttore artistico Marco Stra. Corpo docenti professionisti, masterclass ed energia urban alle porte di Milano.",
       },
-      { property: "og:title", content: "About Us | MS Dance Factory" },
+      {
+        name: "keywords",
+        content:
+          "marco stra, chi siamo ms dance factory, scuola danza rho, docenti ms dance factory, marco stra ballerino, hip hop rho fiera, heels milano",
+      },
+      {
+        property: "og:title",
+        content: "Chi Siamo & Marco Stra | MS Dance Factory — Scuola Danza Rho",
+      },
       {
         property: "og:description",
         content:
-          "Dall'energia dell'hip-hop al palcoscenico: la nostra storia, i maestri e la nostra visione della danza urbana.",
+          "La storia, la visione e i maestri di MS Dance Factory a Rho (Milano), fondata e diretta da Marco Stra.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.msdancefactory.it/about" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.msdancefactory.it/about" },
     ],
   }),
   component: AboutPage,
@@ -82,6 +97,7 @@ function AboutPage() {
             </p>
           </div>
           <h1 className="display-title neon-text max-w-4xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.92] tracking-tight">
+            <span className="sr-only">Chi Siamo — MS Dance Factory Scuola di Danza a Rho (Milano) di Marco Stra. </span>
             IL MOVIMENTO È<br />
             LA NOSTRA VOCE.
           </h1>

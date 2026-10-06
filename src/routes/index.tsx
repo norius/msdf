@@ -9,20 +9,34 @@ import { submitContactForm } from "@/lib/actions";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MS Dance Factory | Scuola di Danza Urban — Corsi e Orari" },
+      {
+        title: "MS Dance Factory | Scuola di Danza a Rho (Milano) — Diretta da Marco Stra",
+      },
       {
         name: "description",
         content:
-          "MS Dance Factory: scuola di danza urban. Hip-Hop, Dancehall, Afro, Heels, Vogueing, Commerciale e Caraibico. Orari corsi dal lunedì al giovedì e lezioni di prova gratuite.",
+          "MS Dance Factory è la scuola di danza urban e accademia a Rho (Milano) fondata da Marco Stra. Corsi di Hip Hop, Heels, Dancehall, Afro, Vogueing, Caraibico e lezioni di prova a Rho Fiera.",
       },
-      { property: "og:title", content: "MS Dance Factory | Scuola di Danza Urban" },
+      {
+        name: "keywords",
+        content:
+          "scuola danza rho, marco stra, ms dance factory, hip hop rho, corsi danza rho fiera, heels milano, scuola ballo rho, danza urban milano, academy danza",
+      },
+      {
+        property: "og:title",
+        content: "MS Dance Factory | Scuola di Danza a Rho (Milano) — Marco Stra",
+      },
       {
         property: "og:description",
         content:
-          "Energia, ritmo e passione. Scopri corsi, insegnanti e l'orario settimanale della MS Dance Factory.",
+          "Scuola di danza urban e accademia professionale diretta da Marco Stra a Rho Fiera (Milano). Corsi Hip-Hop, Heels, Dancehall, Afro e prima settimana di prova.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.msdancefactory.it/" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.msdancefactory.it/" },
     ],
   }),
   component: Index,
@@ -61,6 +75,7 @@ function Index() {
           </div>
 
           <h1 className="display-title neon-text max-w-4xl text-3xl min-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-8xl leading-[0.92] tracking-tight">
+            <span className="sr-only">MS Dance Factory — Scuola di Danza Urban a Rho (Milano) di Marco Stra. </span>
             <span className="block">DANCE FIRST.</span>
             <span className="block">THINK LATER.</span>
             <span className="block">IT’S THE NATURAL ORDER.</span>

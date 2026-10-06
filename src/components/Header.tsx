@@ -114,25 +114,22 @@ export function Header() {
               </Link>
               <Link
                 to="/accademia"
-                className={`hidden transition-colors sm:block ${
-                  location.pathname === "/accademia" ? "text-primary font-medium" : "hover:text-foreground"
-                }`}
+                className={`hidden transition-colors sm:block ${location.pathname === "/accademia" ? "text-primary font-medium" : "hover:text-foreground"
+                  }`}
               >
                 Accademia
               </Link>
               <Link
                 to="/about"
-                className={`hidden transition-colors sm:block ${
-                  location.pathname === "/about" ? "text-primary font-medium" : "hover:text-foreground"
-                }`}
+                className={`hidden transition-colors sm:block ${location.pathname === "/about" ? "text-primary font-medium" : "hover:text-foreground"
+                  }`}
               >
                 About us
               </Link>
               <Link
                 to="/shop"
-                className={`hidden transition-colors sm:block ${
-                  location.pathname === "/shop" ? "text-primary font-medium" : "hover:text-foreground"
-                }`}
+                className={`hidden transition-colors sm:block ${location.pathname === "/shop" ? "text-primary font-medium" : "hover:text-foreground"
+                  }`}
               >
                 Shop
               </Link>
@@ -167,44 +164,32 @@ export function Header() {
                 <Link
                   to="/"
                   onClick={() => setIsOpen(false)}
-                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
-                    location.pathname === "/" ? "text-primary" : "hover:text-foreground"
-                  }`}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${location.pathname === "/" ? "text-primary" : "hover:text-foreground"
+                    }`}
                 >
                   Home
                 </Link>
                 <Link
                   to="/accademia"
                   onClick={() => setIsOpen(false)}
-                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
-                    location.pathname === "/accademia" ? "text-primary" : "hover:text-foreground"
-                  }`}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${location.pathname === "/accademia" ? "text-primary" : "hover:text-foreground"
+                    }`}
                 >
                   Accademia
                 </Link>
                 <Link
                   to="/about"
                   onClick={() => setIsOpen(false)}
-                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
-                    location.pathname === "/about" ? "text-primary" : "hover:text-foreground"
-                  }`}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${location.pathname === "/about" ? "text-primary" : "hover:text-foreground"
+                    }`}
                 >
                   About us
                 </Link>
                 <Link
-                  to="/about"
-                  hash="staff"
-                  onClick={() => setIsOpen(false)}
-                  className="text-left transition-colors text-xl font-semibold uppercase tracking-wider hover:text-foreground"
-                >
-                  Staff
-                </Link>
-                <Link
                   to="/shop"
                   onClick={() => setIsOpen(false)}
-                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${
-                    location.pathname === "/shop" ? "text-primary" : "hover:text-foreground"
-                  }`}
+                  className={`text-left transition-colors text-xl font-semibold uppercase tracking-wider ${location.pathname === "/shop" ? "text-primary" : "hover:text-foreground"
+                    }`}
                 >
                   Shop
                 </Link>

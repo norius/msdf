@@ -57,7 +57,7 @@ export const schedule: Record<Day, Lesson[]> = {
     { time: "18:30 - 19:30", course: "Commercial Avanzato (14+)", room: "Sala 1", teacher: "Marco Stra", level: "Queen Crew" },
     { time: "19:30 - 20:30", course: "Commercial (16+)", room: "Sala 1", teacher: "Marco Stra", level: "Royal Crew" },
     { time: "19:30 - 20:30", course: "Commercial (14+)", room: "Sala 2", teacher: "Edoardo", level: "Principianti" },
-    { time: "20:30 - 21:30", course: "Dancehall (14+)", room: "Sala 1", teacher: "Ale La Scotti", level: "Open" },
+    { time: "20:30 - 21:30", course: "Dancehall (14+)", room: "Sala 1", teacher: "Alice La Scotti", level: "Open" },
     { time: "20:30 - 21:30", course: "Heels Stiletto (14+)", room: "Sala 2", teacher: "Sofia Ventrella", level: "Open" },
     { time: "21:30 - 22:30", course: "Commercial Avanzato (17+)", room: "Sala 1", teacher: "Marco Stra", level: "Wild Mama's" },
     { time: "21:30 - 22:30", course: "Country (16+)", room: "Sala 2", teacher: "Silvia", level: "Open" },
@@ -92,7 +92,7 @@ export const disciplines = [
   {
     name: "Dancehall",
     image: dancehall,
-    description: "Energia giamaicana pura, steps iconici e attitude da party con Ale La Scotti.",
+    description: "Energia giamaicana pura, steps iconici e attitude da party con Alice La Scotti.",
     levels: ["Open"],
   },
   {
@@ -230,7 +230,7 @@ export const staff: StaffMember[] = [
     tags: ["Scuola", "Accademia"],
   },
   {
-    name: "Ale La Scotti",
+    name: "Alice La Scotti",
     image: scotti,
     styles: "Dancehall",
     bio: "Ballerina ed insegnante di Dancehall. Porta in sala l'energia autentica giamaicana, steps iconici, flow e la cultura originale della street dance caraibica.",
